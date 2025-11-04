@@ -1,0 +1,129 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on",
+        "useSortedProperties": "on"
+      }
+    },
+    "enabled": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "html": {
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "asNeeded",
+      "trailingCommas": "es5"
+    }
+  },
+  "json": {
+    "formatter": {
+      "expand": "always"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "complexity": {
+        "noForEach": "on",
+        "noImportantStyles": "off",
+        "noUselessStringConcat": "on",
+        "noVoid": "on",
+        "useSimplifiedLogicExpression": "on",
+        "useWhile": "on"
+      },
+      "correctness": {
+        // Don't work well in astro files, `vtsls` will check them.
+        "noUnusedImports": "off",
+        "noUnusedVariables": "off"
+      },
+      "nursery": {
+        "noDeprecatedImports": "on",
+        "noDuplicateDependencies": "on",
+        "noEmptySource": "on",
+        "noFloatingPromises": "on",
+        "noIncrementDecrement": "on",
+        "noUselessUndefined": "on",
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "on",
+          "options": {}
+        }
+      },
+      "performance": {
+        "noAwaitInLoops": "on",
+        "noDelete": "on",
+        "useGoogleFontPreconnect": "on",
+        "useTopLevelRegex": "on"
+      },
+      "recommended": true,
+      "security": {
+        "noSecrets": "on"
+      },
+      "style": {
+        "noCommonJs": "on",
+        "noImplicitBoolean": "on",
+        "noInferrableTypes": "on",
+        "noNegationElse": "on",
+        "noParameterAssign": "on",
+        "noUnusedTemplateLiteral": "on",
+        "noUselessElse": "on",
+        "noYodaExpression": "on",
+        "useAsConstAssertion": "on",
+        "useBlockStatements": "on",
+        "useCollapsedElseIf": "on",
+        "useCollapsedIf": "on",
+        "useConsistentArrayType": "on",
+        "useConsistentBuiltinInstantiation": "on",
+        "useConsistentMemberAccessibility": "on",
+        "useConsistentObjectDefinitions": "on",
+        "useDefaultParameterLast": "on",
+        "useExplicitLengthCheck": "on",
+        "useFilenamingConvention": "on",
+        "useForOf": "on",
+        "useFragmentSyntax": "on",
+        "useGroupedAccessorPairs": "on",
+        "useNamingConvention": "on",
+        "useNodeAssertStrict": "on",
+        "useNumberNamespace": "on",
+        "useNumericSeparators": "on",
+        "useObjectSpread": "on",
+        "useReactFunctionComponents": "on",
+        "useReadonlyClassProperties": "on",
+        "useSelfClosingElements": "on",
+        "useShorthandAssign": "on",
+        "useShorthandFunctionType": "on",
+        "useSingleVarDeclarator": "on",
+        "useSymbolDescription": "on",
+        "useTemplate": "on",
+        "useThrowNewError": "on",
+        "useThrowOnlyError": "on",
+        "useUnifiedTypeSignatures": "on"
+      },
+      "suspicious": {
+        "noEmptyBlockStatements": "on",
+        "noEvolvingTypes": "on",
+        "noUnassignedVariables": "on",
+        "noVar": "on",
+        "useAwait": "on",
+        "useErrorMessage": "on"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
+  }
+}
