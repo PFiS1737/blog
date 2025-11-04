@@ -43,11 +43,6 @@
         "useSimplifiedLogicExpression": "on",
         "useWhile": "on"
       },
-      "correctness": {
-        // Don't work well in astro files, `vtsls` will check them.
-        "noUnusedImports": "off",
-        "noUnusedVariables": "off"
-      },
       "nursery": {
         "noDeprecatedImports": "on",
         "noDuplicateDependencies": "on",
@@ -121,6 +116,21 @@
       }
     }
   },
+  "overrides": [
+    {
+      "includes": [
+        "**/*.astro"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    }
+  ],
   "vcs": {
     "clientKind": "git",
     "enabled": true,
