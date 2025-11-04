@@ -17,15 +17,16 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.6.0
         version: 3.6.0
-      '@biomejs/biome':
-        specifier: ^2.3.3
-        version: 2.3.3
       astro:
         specifier: ^5.15.3
         version: 5.15.3(@types/node@24.10.0)(rollup@4.52.5)(typescript@5.9.3)
       sharp:
         specifier: ^0.34.3
         version: 0.34.4
+    devDependencies:
+      '@biomejs/biome':
+        specifier: ^2.3.3
+        version: 2.3.3
 
 packages:
 
