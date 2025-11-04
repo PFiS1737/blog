@@ -85,7 +85,17 @@
         "useConsistentObjectDefinitions": "on",
         "useDefaultParameterLast": "on",
         "useExplicitLengthCheck": "on",
-        "useFilenamingConvention": "on",
+        "useFilenamingConvention": {
+          "level": "on",
+          "options": {
+            "filenameCases": [
+              "camelCase",
+              "export",
+              "kebab-case",
+              "PascalCase"
+            ]
+          }
+        },
         "useForOf": "on",
         "useFragmentSyntax": "on",
         "useGroupedAccessorPairs": "on",
