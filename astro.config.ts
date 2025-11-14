@@ -14,6 +14,14 @@ import config from "./src/site.config"
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    contentIntellisense: true,
+    preserveScriptOrder: true,
+  },
+  image: {
+    layout: "constrained",
+    responsiveStyles: true,
+  },
   integrations: [mdx(), sitemap()],
   markdown: {
     rehypePlugins: [
@@ -34,6 +42,7 @@ export default defineConfig({
     remarkPlugins: [remarkToc, remarkGithubAlerts, remarkMath, remarkGemoji],
   },
   site: config.site,
+  trailingSlash: "never",
   vite: {
     plugins: [tailwindcss()],
   },
