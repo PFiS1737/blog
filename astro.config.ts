@@ -1,8 +1,11 @@
 import { rehypeHeadingIds } from "@astrojs/markdown-remark"
 import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections"
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "astro/config"
+import expressiveCode from "astro-expressive-code"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeKatex from "rehype-katex"
@@ -22,7 +25,18 @@ export default defineConfig({
     layout: "constrained",
     responsiveStyles: true,
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    sitemap(),
+    expressiveCode({
+      defaultProps: {
+        showLineNumbers: false,
+        wrap: false,
+      },
+      plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
+      themes: ["github-dark-dimmed", "dark-plus", "tokyo-night"],
+    }),
+    mdx(),
+  ],
   markdown: {
     rehypePlugins: [
       [rehypeHeadingIds, { headingIdCompat: true }],
