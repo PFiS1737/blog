@@ -18,6 +18,8 @@ const posts = defineCollection({
 
       tags: z.array(z.string()).optional().default(["others"]),
       series: z.string().optional(),
+
+      draft: z.boolean().optional().default(false),
       featured: z.boolean().optional().default(false),
 
       toc: z.boolean().optional().default(true),
