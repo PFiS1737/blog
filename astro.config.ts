@@ -13,6 +13,8 @@ import remarkGemoji from "remark-gemoji"
 import remarkGithubAlerts from "remark-github-alerts"
 import remarkMath from "remark-math"
 import remarkToc from "remark-toc"
+import { remarkReadingTime } from "./src/plugins/remark-reading-time"
+import { remarkSummary } from "./src/plugins/remark-summary"
 import config from "./src/site.config"
 
 // https://astro.build/config
@@ -53,7 +55,14 @@ export default defineConfig({
       ],
       rehypeKatex,
     ],
-    remarkPlugins: [remarkToc, remarkGithubAlerts, remarkMath, remarkGemoji],
+    remarkPlugins: [
+      remarkSummary,
+      remarkReadingTime,
+      remarkToc,
+      remarkGithubAlerts,
+      remarkMath,
+      remarkGemoji,
+    ],
   },
   site: config.site,
   trailingSlash: "never",
