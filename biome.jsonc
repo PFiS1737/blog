@@ -50,9 +50,12 @@
         "noDeprecatedImports": "on",
         "noDuplicateDependencies": "on",
         "noEmptySource": "on",
+        "noEqualsToNull": "on",
         "noFloatingPromises": "on",
         "noIncrementDecrement": "on",
+        "noProto": "on",
         "noUselessUndefined": "on",
+        "useFind": "on",
         "useSortedClasses": {
           "fix": "safe",
           "level": "on",
