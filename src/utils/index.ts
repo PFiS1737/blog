@@ -7,7 +7,7 @@ export async function getSortedPosts() {
     })
   ).sort(
     (a, b) =>
-      (b.data.updatedDate ?? b.data.pubDate).getTime() -
-      (a.data.updatedDate ?? a.data.pubDate).getTime()
+      (b.data.updateDate ?? b.data.publishDate).getTime() -
+      (a.data.updateDate ?? a.data.publishDate).getTime()
   )
 }
