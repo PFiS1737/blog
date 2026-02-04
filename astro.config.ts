@@ -14,7 +14,8 @@ import remarkMath from "remark-math"
 import remarkToc from "remark-toc"
 import { remarkReadingTime } from "./src/plugins/remark-reading-time"
 import { remarkSummary } from "./src/plugins/remark-summary"
-import config from "./src/site.config"
+
+export const SITE = "https://pfis1737.github.io"
 
 // https://astro.build/config
 export default defineConfig({
@@ -61,10 +62,9 @@ export default defineConfig({
       remarkGemoji,
     ],
   },
-  site: config.site,
+  site: SITE,
   trailingSlash: "never",
   vite: {
     plugins: [tailwindcss()],
   },
 })
-

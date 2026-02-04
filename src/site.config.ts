@@ -1,6 +1,12 @@
-// biome-ignore assist/source/useSortedKeys: better readability
+/** biome-ignore-all assist/source/useSortedKeys: better readability */
+
+import { MailIcon, MarkGithubIcon } from "@primer/octicons-react"
+import { SITE } from "astro.config"
+import IconBilbil from "@/assets/icons/bilibili.svg"
+import IconSteam from "@/assets/icons/steam.svg"
+
 export default {
-  site: "https://pfis1737.github.io",
+  site: SITE,
 
   title: "PFiS'Blog",
   author: "PFiS",
@@ -10,16 +16,55 @@ export default {
   repo: "blog",
   branch: "main",
 
-  socialLinks: {
-    bilibili: "470803955",
-    discord: "",
-    email: "pfis1737@gmail.com",
-    // biome-ignore lint/security/noSecrets: not a secret
-    skland: "2530890042194",
-    steam: "",
-    telegram: "",
-    x: "",
-  },
+  // socialLinks: {
+  //   bilibili: "470803955",
+  //   // biome-ignore lint/security/noSecrets: not a secret
+  //   skland: "2530890042194",
+  // },
+  socialLinks: [
+    {
+      title: "GitHub",
+      href: "https://github.com/pfis1737",
+      icon: MarkGithubIcon,
+      iconProps: { size: 24 },
+    },
+    {
+      title: "Mail",
+      href: "mailto:pfis1737@gmail.com",
+      icon: MailIcon,
+      iconProps: { size: 16 },
+    },
+    // {
+    //   title: "X",
+    //   href: "https://x.com/pfis1737",
+    //   icon: IconX,
+    //   iconProps: { width: 24, height: 24 },
+    // },
+    // {
+    //   title: "Telegram",
+    //   href: "https://t.me/pfis1737",
+    //   icon: IconTelegram,
+    //   iconProps: { width: 24, height: 24 },
+    // },
+    // {
+    //   title: "Discord",
+    //   href: "https://discord.com/users/pfis1737",
+    //   icon: IconDiscord,
+    //   iconProps: { width: 24, height: 24 },
+    // },
+    {
+      title: "Steam",
+      href: "https://steamcommunity.com/id/pfis1737",
+      icon: IconSteam,
+      iconProps: { width: 24, height: 24 },
+    },
+    {
+      title: "bilibili",
+      href: "https://space.bilibili.com/470803955",
+      icon: IconBilbil,
+      iconProps: { width: 24, height: 24 },
+    },
+  ],
 
   appearance: {
     postsPerPage: 6,
