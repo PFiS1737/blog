@@ -27,7 +27,7 @@ const { page } = Astro.props
         ariaLabel="Previous"
       >
         <ArrowLeftIcon className="size-5 pb-1 rtl:rotate-180" />
-        <span>Prev</span>
+        Prev
       </LinkButton>
       {page.currentPage} / {page.lastPage}
       <LinkButton
@@ -39,7 +39,7 @@ const { page } = Astro.props
         ]}
         ariaLabel="Next"
       >
-        <span>Next</span>
+        Next
         <ArrowRightIcon className="size-5 pb-1 rtl:rotate-180" />
       </LinkButton>
     </nav>

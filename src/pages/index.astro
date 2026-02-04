@@ -92,10 +92,14 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
       )
     }
 
-    <div class="my-8 text-center">
-      <LinkButton href="/posts">
+    <div class="mt-auto mb-8 text-center">
+      <LinkButton
+        href="/posts"
+        class="select-none inline-flex items-center gap-1"
+        ariaLabel="All Posts"
+      >
         All Posts
-        <ArrowRightIcon className="inline-block rtl:-rotate-180" />
+        <ArrowRightIcon className="size-5 pb-1 rtl:rotate-180" />
       </LinkButton>
     </div>
   </main>
