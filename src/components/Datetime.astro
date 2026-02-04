@@ -1,0 +1,38 @@
+---
+import dayjs from "dayjs"
+
+export interface Props {
+  publishDate: string | Date
+  updateDate: string | Date | undefined | null
+  size?: "sm" | "lg"
+  class?: string
+}
+
+const {
+  publishDate,
+  updateDate,
+  size = "sm",
+  class: className = "",
+} = Astro.props
+
+/* ========== Formatted Datetime ========== */
+const isModified = updateDate && updateDate > publishDate
+
+const datetime = dayjs(isModified ? updateDate : publishDate)
+
+const date = datetime.format("D MMM, YYYY") // e.g., '22 Mar, 2025'
+---
+
+<div class:list={["flex items-center gap-x-2 opacity-80", className]}>
+  {
+    isModified && (
+      <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+        Updated:
+      </span>
+    )
+  }
+  <time
+    class:list={["text-sm", { "sm:text-base": size === "lg" }]}
+    datetime={datetime.toISOString()}>{date}</time
+  >
+</div>

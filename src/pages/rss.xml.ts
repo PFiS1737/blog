@@ -1,7 +1,7 @@
 // See: https://github.com/delucis/astro-blog-full-text-rss/blob/latest/src/pages/rss.xml.ts
 
 import { loadRenderers } from "astro:container"
-import { render } from "astro:content"
+import { getCollection, render } from "astro:content"
 import { getContainerRenderer as getMdxRenderer } from "@astrojs/mdx"
 import rss, { type RSSFeedItem } from "@astrojs/rss"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
@@ -18,7 +18,7 @@ export async function GET() {
   })
 
   const base = config.site
-  const posts = await getSortedPosts()
+  const posts = getSortedPosts(await getCollection("posts"))
 
   const items: RSSFeedItem[] = []
   for (const post of posts) {
@@ -39,7 +39,7 @@ export async function GET() {
       },
       sanitize({ dropElements: ["script", "style"] }),
     ])
-    items.push({ ...post.data, content, link: `/blog/${post.id}/` })
+    items.push({ ...post.data, content, link: `/posts/${post.id}` })
   }
 
   return rss({

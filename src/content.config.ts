@@ -2,8 +2,10 @@ import { defineCollection, z } from "astro:content"
 import { glob } from "astro/loaders"
 import config from "@/site.config"
 
+export const BLOG_PATH = "src/content/posts"
+
 const posts = defineCollection({
-  loader: glob({ base: "./src/content/posts", pattern: "**/[^_]*.{md,mdx}" }),
+  loader: glob({ base: `./${BLOG_PATH}`, pattern: "**/[^_]*.{md,mdx}" }),
   schema: (/* { image } */) =>
     // biome-ignore assist/source/useSortedKeys: better readability
     z.object({

@@ -2,18 +2,18 @@
 export default {
   site: "https://pfis1737.github.io",
 
+  title: "PFiS'Blog",
+  author: "PFiS",
+  description: "PFiS'Blog | Powered by Astro and ♥",
+
+  github: "pfis1737",
   repo: "blog",
   branch: "main",
-
-  title: "PFiS' Blog",
-  author: "PFiS",
-  description: "PFiS' Blog powered by Astro and ♥",
 
   socialLinks: {
     bilibili: "470803955",
     discord: "",
     email: "pfis1737@gmail.com",
-    github: "pfis1737",
     // biome-ignore lint/security/noSecrets: not a secret
     skland: "2530890042194",
     steam: "",
@@ -21,10 +21,12 @@ export default {
     x: "",
   },
 
-  rss: true,
-  editPost: true,
+  appearance: {
+    postsPerPage: 6,
+    recentPostsCount: 4,
+  },
 
   giscus: {
     enabled: true,
   },
-}
+} as const

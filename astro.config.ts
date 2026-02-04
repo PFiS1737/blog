@@ -1,12 +1,11 @@
-import { rehypeHeadingIds } from "@astrojs/markdown-remark"
 import mdx from "@astrojs/mdx"
+import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "astro/config"
 import expressiveCode from "astro-expressive-code"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeKatex from "rehype-katex"
 import remarkGemoji from "remark-gemoji"
@@ -28,7 +27,9 @@ export default defineConfig({
     responsiveStyles: true,
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.endsWith("/archives"),
+    }),
     expressiveCode({
       defaultProps: {
         showLineNumbers: false,
@@ -38,14 +39,10 @@ export default defineConfig({
       themes: ["github-dark-dimmed", "dark-plus", "tokyo-night"],
     }),
     mdx(),
+    react(),
   ],
   markdown: {
     rehypePlugins: [
-      [rehypeHeadingIds, { headingIdCompat: true }],
-      [
-        rehypeAutolinkHeadings,
-        { behavior: "append", content: { type: "text", value: "#" } },
-      ],
       [
         rehypeExternalLinks,
         {
@@ -70,3 +67,4 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 })
+
