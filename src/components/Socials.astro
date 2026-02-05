@@ -9,7 +9,12 @@ export interface Props {
 const { footer = false } = Astro.props
 ---
 
-<div class:list={["flex-wrap justify-center", { flex: footer }]}>
+<div
+  class:list={[
+    "flex-wrap justify-center",
+    { "mt-2 mb-3 sm:mb-2 flex": footer },
+  ]}
+>
   {
     config.socialLinks.map(
       (social: {
