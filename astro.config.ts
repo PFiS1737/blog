@@ -16,8 +16,6 @@ import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-
 import { remarkReadingTime } from "./src/plugins/remark/reading-time"
 import { remarkSummary } from "./src/plugins/remark/summary"
 
-export const SITE = "https://pfis1737.github.io"
-
 // https://astro.build/config
 export default defineConfig({
   experimental: {
@@ -82,7 +80,7 @@ export default defineConfig({
       remarkGemoji,
     ],
   },
-  site: SITE,
+  site: "https://pfis1737.github.io",
   trailingSlash: "never",
   vite: {
     plugins: [tailwindcss()],

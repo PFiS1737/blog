@@ -1,12 +1,11 @@
 /** biome-ignore-all assist/source/useSortedKeys: better readability */
 
 import { MailIcon, MarkGithubIcon } from "@primer/octicons-react"
-import { SITE } from "astro.config"
 import IconBilbil from "@/assets/icons/bilibili.svg"
 import IconSteam from "@/assets/icons/steam.svg"
 
 export default {
-  site: SITE,
+  site: "https://pfis1737.github.io",
 
   title: "PFiS'Blog",
   author: "PFiS",
