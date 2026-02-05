@@ -51,6 +51,7 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
     })
 
     // Handle button visibility according to scroll position
+    // biome-ignore lint/suspicious/noEvolvingTypes: ...
     let lastVisible = null
     function handleScroll() {
       const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
