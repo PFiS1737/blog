@@ -12,8 +12,9 @@ import remarkGemoji from "remark-gemoji"
 import remarkGithubAlerts from "remark-github-alerts"
 import remarkMath from "remark-math"
 import remarkToc from "remark-toc"
-import { remarkReadingTime } from "./src/plugins/remark-reading-time"
-import { remarkSummary } from "./src/plugins/remark-summary"
+import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-to-clipboard-button"
+import { remarkReadingTime } from "./src/plugins/remark/reading-time"
+import { remarkSummary } from "./src/plugins/remark/summary"
 
 export const SITE = "https://pfis1737.github.io"
 
@@ -36,8 +37,27 @@ export default defineConfig({
         showLineNumbers: false,
         wrap: false,
       },
-      plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
-      themes: ["github-dark-dimmed", "dark-plus", "tokyo-night"],
+      frames: {
+        showCopyToClipboardButton: false, // Use our custom plugin instead
+      },
+      plugins: [
+        pluginLineNumbers(),
+        pluginCollapsibleSections(),
+        pluginCopyToClipboardButton(),
+      ],
+      styleOverrides: {
+        frames: {
+          frameBoxShadowCssValue: "none",
+        },
+      },
+      themeCssSelector: (theme) => `[data-code-theme="${theme.name}"]`,
+      themes: [
+        "github-dark",
+        "github-light",
+        "dark-plus",
+        "light-plus",
+        "tokyo-night",
+      ],
     }),
     mdx(),
     react(),

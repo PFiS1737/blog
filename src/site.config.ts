@@ -32,7 +32,7 @@ export default {
       title: "Mail",
       href: "mailto:pfis1737@gmail.com",
       icon: MailIcon,
-      iconProps: { size: 16 },
+      iconProps: { size: 16 }, // This is only the octicon style. The icons are always rendered with 'size-6' (24px).
     },
     // {
     //   title: "X",

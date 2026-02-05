@@ -82,12 +82,14 @@ const {
     <ClientRouter />
 
     <script>
-      const primaryColorScheme = "" // "light" | "dark"
+      type Theme = "light" | "dark"
+
+      const primaryColorScheme = "" as Theme
 
       // Get theme data from local storage
-      const currentTheme = localStorage.getItem("theme")
+      const currentTheme = localStorage.getItem("theme") as Theme
 
-      function getPreferTheme() {
+      function getPreferTheme(): Theme {
         // return theme value in local storage if it is set
         if (currentTheme) {
           return currentTheme
@@ -113,6 +115,10 @@ const {
 
       function reflectPreference() {
         document.documentElement.setAttribute("data-theme", themeValue)
+        document.documentElement.setAttribute(
+          "data-code-theme",
+          themeValue === "dark" ? "github-dark" : "github-light"
+        ) // TODO: code theme selector
 
         document
           .querySelector("#theme-btn")

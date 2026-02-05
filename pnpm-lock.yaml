@@ -23,6 +23,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.7.0
         version: 3.7.0
+      '@expressive-code/core':
+        specifier: ^0.41.6
+        version: 0.41.6
       '@expressive-code/plugin-collapsible-sections':
         specifier: ^0.41.6
         version: 0.41.6
