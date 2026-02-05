@@ -6,7 +6,7 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
   id="btt-btn-container"
   class:list={[
     "fixed end-4 bottom-8 z-50",
-    "md:sticky md:end-auto md:float-end",
+    "sm:sticky sm:end-auto sm:float-end",
     "translate-y-14 opacity-0 transition duration-500",
   ]}
 >
@@ -15,16 +15,16 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
     class:list={[
       "group relative bg-background px-2 py-1",
       "size-14 rounded-full shadow-xl",
-      "md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none",
-      "md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg",
+      "sm:h-8 sm:w-fit sm:rounded-md sm:shadow-none sm:focus-visible:rounded-none",
+      "sm:bg-background/35 sm:bg-clip-padding sm:backdrop-blur-lg",
     ]}
   >
     <span
       id="progress-indicator"
-      class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"
+      class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent sm:hidden sm:h-8 sm:rounded-md"
     ></span>
-    <ChevronUpIcon className="inline-block size-5 md:hidden" />
-    <span class="sr-only text-sm group-hover:text-accent md:not-sr-only">
+    <ChevronUpIcon className="inline-block size-5 sm:hidden" />
+    <span class="sr-only text-sm group-hover:text-accent sm:not-sr-only">
       <ArrowUpIcon className="inline-block size-4" />
       Back To Top
     </span>
