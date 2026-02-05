@@ -11,15 +11,11 @@ import LinkButton from "./LinkButton.astro"
 
 const { pathname } = Astro.url
 
-// Remove trailing slash from current pathname if exists
-const currentPath =
-  pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname
+const isActive = (target: string) => {
+  const pathArray = pathname.split("/")
+  const targetArray = target.split("/")
 
-const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter((p) => p.trim())
-  const pathArray = path.split("/").filter((p) => p.trim())
-
-  return currentPath === path || currentPathArray[0] === pathArray[0]
+  return pathname === target || pathArray[1] === targetArray[1]
 }
 ---
 

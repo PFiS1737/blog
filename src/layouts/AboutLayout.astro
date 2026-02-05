@@ -2,22 +2,13 @@
 import Breadcrumb from "@/components/Breadcrumb.astro"
 import config from "@/site.config"
 import Layout from "./Layout.astro"
-
-export interface Props {
-  frontmatter: {
-    title: string
-    description?: string
-  }
-}
-
-const { frontmatter } = Astro.props
 ---
 
-<Layout title={`${frontmatter.title} | ${config.title}`}>
+<Layout title={`About | ${config.title}`}>
   <Breadcrumb />
   <main id="main-content">
     <section id="about" class="app-prose mb-28 max-w-app prose-img:border-0">
-      <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
+      <h1 class="text-2xl tracking-wider sm:text-3xl">About</h1>
       <slot />
     </section>
   </main>
