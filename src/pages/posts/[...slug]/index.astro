@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content"
-import PostDetails from "@/layouts/PostDetails.astro"
+import PostLayout from "@/layouts/PostLayout.astro"
 import { getPath, getSortedPosts, type Post } from "@/utils"
 
 export interface Props {
@@ -23,4 +23,4 @@ const posts = await getCollection("posts")
 const sortedPosts = getSortedPosts(posts)
 ---
 
-<PostDetails post={post} posts={sortedPosts} />
+<PostLayout post={post} posts={sortedPosts} />

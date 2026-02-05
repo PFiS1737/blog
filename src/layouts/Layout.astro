@@ -2,6 +2,8 @@
 import { ClientRouter } from "astro:transitions"
 import config from "@/site.config"
 import "@/styles/global.css"
+import Footer from "@/components/Footer.astro"
+import Header from "@/components/Header.astro"
 
 export interface Props {
   title?: string
@@ -11,6 +13,7 @@ export interface Props {
   canonicalUrl?: string
   publishDate?: Date
   updateDate?: Date | null
+  footerNoMarginTop?: boolean
 }
 
 const {
@@ -20,6 +23,7 @@ const {
   canonicalUrl = new URL(Astro.url.pathname, Astro.url),
   publishDate,
   updateDate,
+  footerNoMarginTop = false,
 } = Astro.props
 ---
 
@@ -80,6 +84,8 @@ const {
     <ClientRouter />
   </head>
   <body>
+    <Header />
     <slot />
+    <Footer noMarginTop={footerNoMarginTop} />
   </body>
 </html>

@@ -2,8 +2,6 @@
 import { getCollection } from "astro:content"
 import { ArrowRightIcon, RssIcon } from "@primer/octicons-react"
 import Card from "@/components/Card.astro"
-import Footer from "@/components/Footer.astro"
-import Header from "@/components/Header.astro"
 import Hr from "@/components/Hr.astro"
 import LinkButton from "@/components/LinkButton.astro"
 import Socials from "@/components/Socials.astro"
@@ -17,7 +15,6 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
 ---
 
 <Layout>
-  <Header />
   <main id="main-content" data-layout="index">
     <section id="hero" class="pt-8 pb-6">
       <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
@@ -103,7 +100,6 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
       </LinkButton>
     </div>
   </main>
-  <Footer />
 </Layout>
 
 <script>
