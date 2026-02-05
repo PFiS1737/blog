@@ -15,11 +15,6 @@ export default {
   repo: "blog",
   branch: "main",
 
-  // socialLinks: {
-  //   bilibili: "470803955",
-  //   // biome-ignore lint/security/noSecrets: not a secret
-  //   skland: "2530890042194",
-  // },
   socialLinks: [
     {
       title: "GitHub",
