@@ -3,7 +3,7 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
 ---
 
 <div
-  id="btt-btn-container"
+  id="back-to-top-btn-container"
   class:list={[
     "fixed end-4 bottom-8 z-50",
     "sm:sticky sm:end-auto sm:float-end",
@@ -11,16 +11,15 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
   ]}
 >
   <button
-    data-button="back-to-top"
     class:list={[
       "group relative bg-background px-2 py-1",
       "size-14 rounded-full shadow-xl",
       "sm:h-8 sm:w-fit sm:rounded-md sm:shadow-none sm:focus-visible:rounded-none",
       "sm:bg-background/35 sm:bg-clip-padding sm:backdrop-blur-lg",
     ]}
+    onclick="document.documentElement.scrollTop = 0"
   >
     <span
-      id="progress-indicator"
       class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent sm:hidden sm:h-8 sm:rounded-md"
     ></span>
     <ChevronUpIcon className="inline-block size-5 sm:hidden" />
@@ -31,59 +30,35 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
   </button>
 </div>
 
-<script is:inline data-astro-rerun>
-  /** Scrolls the document to the top when
-   * the "Back to Top" button is clicked. */
-  function backToTop() {
-    const rootElement = document.documentElement
-    const btnContainer = document.querySelector("#btt-btn-container")
-    const backToTopBtn = document.querySelector("[data-button='back-to-top']")
-    const progressIndicator = document.querySelector("#progress-indicator")
+<script>
+  import { getArticleProgress } from "@/utils/client"
 
-    if (!(rootElement && btnContainer && backToTopBtn && progressIndicator)) {
-      return
+  let lastVisible: boolean
+  function handleScroll() {
+    const btnContainer = document.querySelector("#back-to-top-btn-container")
+    const progressIndicator = btnContainer?.querySelector(
+      "button > span"
+    ) as HTMLElement | null
+
+    const percent = getArticleProgress()
+
+    progressIndicator?.style.setProperty(
+      "background-image",
+      `conic-gradient(var(--accent), var(--accent) ${percent}%, transparent ${percent}%)`
+    )
+
+    const isVisible = percent > 20
+
+    if (isVisible !== lastVisible) {
+      btnContainer?.classList.toggle("opacity-100", isVisible)
+      btnContainer?.classList.toggle("translate-y-0", isVisible)
+      btnContainer?.classList.toggle("opacity-0", !isVisible)
+      btnContainer?.classList.toggle("translate-y-14", !isVisible)
+      lastVisible = isVisible
     }
-
-    // Attach click event handler for back-to-top button
-    backToTopBtn.addEventListener("click", () => {
-      document.body.scrollTop = 0 // For Safari
-      document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
-    })
-
-    // Handle button visibility according to scroll position
-    // biome-ignore lint/suspicious/noEvolvingTypes: ...
-    let lastVisible = null
-    function handleScroll() {
-      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
-      const scrollTop = rootElement.scrollTop
-      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100)
-
-      progressIndicator.style.setProperty(
-        "background-image",
-        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
-      )
-
-      const isVisible = scrollTop / scrollTotal > 0.3
-
-      if (isVisible !== lastVisible) {
-        btnContainer.classList.toggle("opacity-100", isVisible)
-        btnContainer.classList.toggle("translate-y-0", isVisible)
-        btnContainer.classList.toggle("opacity-0", !isVisible)
-        btnContainer.classList.toggle("translate-y-14", !isVisible)
-        lastVisible = isVisible
-      }
-    }
-
-    let ticking = false
-    document.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll()
-          ticking = false
-        })
-        ticking = true
-      }
-    })
   }
-  backToTop()
+
+  document.addEventListener("scroll", () => {
+    handleScroll()
+  })
 </script>

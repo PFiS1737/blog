@@ -74,7 +74,6 @@ const {
     <meta property="twitter:description" content={description} />
 
     <!-- Enable RSS feed auto-discovery  -->
-    <!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery -->
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -88,5 +87,18 @@ const {
     <Header />
     <slot />
     <Footer noMarginTop={footerNoMarginTop} />
+    <div class="progress-container fixed top-0 z-10 h-1 w-full bg-background">
+      <div class="progress-bar h-1 w-0 bg-accent"></div>
+    </div>
   </body>
 </html>
+
+<script>
+  import { getArticleProgress } from "@/utils/client"
+
+  document.addEventListener("scroll", () => {
+    const percent = getArticleProgress()
+    const bar = document.querySelector(".progress-bar") as HTMLDivElement
+    bar.style.width = `${percent}%`
+  })
+</script>
