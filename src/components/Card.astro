@@ -1,14 +1,15 @@
 ---
-import { getPath, type Post, slugifyStr } from "@/utils"
-import Datetime from "./Datetime.astro"
+import { getPath, type Post, renderPost, slugifyStr } from "@/utils"
+import PostInfo from "./PostInfo.astro"
 
 export interface Props extends Post {
   variant?: "h2" | "h3"
 }
 
-const { variant = "h2", data, id, filePath } = Astro.props
+const { variant = "h2", id, filePath } = Astro.props
 
-const { title, description, publishDate, updateDate } = data
+const { title, description, publishDate, updateDate, readingTime } =
+  await renderPost(Astro.props)
 
 const headerProps = {
   class: "text-lg font-medium decoration-dashed hover:underline",
@@ -29,6 +30,6 @@ const headerProps = {
       )
     }
   </a>
-  <Datetime {publishDate} {updateDate} />
+  <PostInfo {publishDate} {updateDate} {readingTime} />
   <p>{description}</p>
 </li>

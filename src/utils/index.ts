@@ -1,5 +1,6 @@
-import type { CollectionEntry } from "astro:content"
+import { type CollectionEntry, render } from "astro:content"
 import kebabcase from "lodash.kebabcase"
+import type { ReadTimeResults } from "reading-time"
 import { BLOG_PATH } from "@/content.config"
 
 export type Post = CollectionEntry<"posts">
@@ -96,4 +97,22 @@ export function getPath(
   }
 
   return [basePath, ...pathSegments, slug].join("/")
+}
+
+export async function renderPost(post: Post) {
+  const { Content, headings, remarkPluginFrontmatter } = await render(post)
+
+  const { description, readingTime } = remarkPluginFrontmatter as {
+    description: string
+    readingTime: ReadTimeResults
+  }
+
+  return {
+    ...post.data,
+    // biome-ignore lint/style/useNamingConvention: ...
+    Content,
+    description: post.data.description ?? description,
+    headings,
+    readingTime,
+  }
 }

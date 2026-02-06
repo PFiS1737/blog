@@ -3,7 +3,7 @@
 import type { RemarkPlugin } from "@astrojs/markdown-remark"
 import { toString as mdastToString } from "mdast-util-to-string"
 
-export const remarkSummary: RemarkPlugin = (options?: {
+export const remarkDescription: RemarkPlugin = (options?: {
   maxChars?: number
 }) => {
   const maxChars = options?.maxChars || 200

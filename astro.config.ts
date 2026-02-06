@@ -13,8 +13,8 @@ import remarkGithubAlerts from "remark-github-alerts"
 import remarkMath from "remark-math"
 import remarkToc from "remark-toc"
 import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-to-clipboard-button"
+import { remarkDescription } from "./src/plugins/remark/description"
 import { remarkReadingTime } from "./src/plugins/remark/reading-time"
-import { remarkSummary } from "./src/plugins/remark/summary"
 
 // https://astro.build/config
 export default defineConfig({
@@ -65,7 +65,7 @@ export default defineConfig({
       rehypeKatex,
     ],
     remarkPlugins: [
-      remarkSummary,
+      remarkDescription,
       remarkReadingTime,
       remarkToc,
       remarkGithubAlerts,

@@ -1,12 +1,11 @@
 ---
-import { render } from "astro:content"
 import { ChevronLeftIcon, ChevronRightIcon } from "@primer/octicons-react"
 import BackToTopButton from "@/components/BackToTopButton.astro"
-import Datetime from "@/components/Datetime.astro"
+import PostInfo from "@/components/PostInfo.astro"
 import Tag from "@/components/Tag.astro"
 import Layout from "@/layouts/Layout.astro"
 import config from "@/site.config"
-import { getPath, type Post, slugifyStr } from "@/utils"
+import { getPath, type Post, renderPost, slugifyStr } from "@/utils"
 
 export interface Props {
   post: Post
@@ -15,9 +14,16 @@ export interface Props {
 
 const { post, posts } = Astro.props
 
-const { title, author, description, publishDate, updateDate, tags } = post.data
-
-const { Content } = await render(post)
+const {
+  title,
+  author,
+  description,
+  publishDate,
+  updateDate,
+  tags,
+  Content,
+  readingTime,
+} = await renderPost(post)
 
 const layoutProps = {
   author,
@@ -56,7 +62,7 @@ const nextPost =
       {title}
     </h1>
     <div class="my-2 flex items-center gap-2">
-      <Datetime {publishDate} {updateDate} size="lg" />
+      <PostInfo {publishDate} {updateDate} {readingTime} size="lg" />
     </div>
     <article id="article" class="app-prose mx-auto mt-8 max-w-app">
       <Content />
