@@ -34,7 +34,7 @@ const layoutProps = {
   updateDate,
 }
 
-/* ========== Prev/Next Posts ========== */
+const transitionName = slugifyStr(title)
 
 const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
   filePath,
@@ -56,7 +56,7 @@ const nextPost =
     data-pagefind-body
   >
     <h1
-      transition:name={slugifyStr(title)}
+      transition:name={transitionName}
       class="inline-block text-2xl font-bold text-accent sm:text-3xl"
     >
       {title}

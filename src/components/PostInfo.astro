@@ -1,10 +1,11 @@
 ---
-import { format, formatISO } from "date-fns"
+import { RelativeTime } from "@primer/react"
+import clsx from "clsx"
 import type { ReadTimeResults } from "reading-time"
 
 export interface Props {
-  publishDate: string | Date
-  updateDate: string | Date | undefined | null
+  publishDate: Date
+  updateDate: Date | undefined | null
   readingTime: ReadTimeResults
   size?: "sm" | "lg"
   class?: string
@@ -27,9 +28,12 @@ const textSizeClassList = ["text-sm", { "sm:text-base": size === "lg" }]
 
 <div class:list={["flex items-center gap-x-2 opacity-80", className]}>
   {isModified && <span class:list={textSizeClassList}>Updated:</span>}
-  <time class:list={textSizeClassList} datetime={formatISO(date)}>
-    {format(date, "d MMM, yyyy")}
-  </time>
-  <span class:list={textSizeClassList}> | </span>
+  <RelativeTime
+    client:load
+    className={clsx(textSizeClassList)}
+    date={date}
+    prefix=""
+  />
+  <span class:list={textSizeClassList}>|</span>
   <span class:list={textSizeClassList}>{readingTime.text}</span>
 </div>

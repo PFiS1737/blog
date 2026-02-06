@@ -11,10 +11,7 @@ const { variant = "h2", id, filePath } = Astro.props
 const { title, description, publishDate, updateDate, readingTime } =
   await renderPost(Astro.props)
 
-const headerProps = {
-  class: "text-lg font-medium decoration-dashed hover:underline",
-  style: { viewTransitionName: slugifyStr(title) },
-}
+const transitionName = slugifyStr(title)
 ---
 
 <li class="my-6">
@@ -24,9 +21,19 @@ const headerProps = {
   >
     {
       variant === "h2" ? (
-        <h2 {...headerProps}>{title}</h2>
+        <h2
+          transition:name={transitionName}
+          class="text-lg font-medium decoration-dashed hover:underline"
+        >
+          {title}
+        </h2>
       ) : (
-        <h3 {...headerProps}>{title}</h3>
+        <h3
+          transition:name={transitionName}
+          class="text-lg font-medium decoration-dashed hover:underline"
+        >
+          {title}
+        </h3>
       )
     }
   </a>
