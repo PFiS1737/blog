@@ -1,3 +1,5 @@
+@import "katex/dist/katex.min.css";
+
 @plugin "@tailwindcss/typography";
 
 @layer base {
@@ -85,9 +87,13 @@
     pre {
       @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
     }
-  }
 
-  .expressive-code {
-    @apply mb-5;
+    .expressive-code {
+      @apply mb-5;
+    }
+
+    .katex-display {
+      @apply text-foreground;
+    }
   }
 }
