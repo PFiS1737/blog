@@ -1,7 +1,10 @@
-// @see https://github.com/expressive-code/expressive-code/blob/main/packages/%40expressive-code/plugin-frames/src/copy-js-module.ts
+// See: https://github.com/expressive-code/expressive-code/blob/main/packages/%40expressive-code/plugin-frames/src/copy-js-module.ts
 
 import { definePlugin } from "@expressive-code/core"
-import { h, s, select } from "@expressive-code/core/hast"
+import { CheckIcon, CopyIcon } from "@primer/octicons-react"
+import type { Element, Node } from "hast"
+import { select } from "hast-util-select"
+import { reactToHast } from "../../utils/server"
 
 /**
  * Helper functions so that we can have a syntax highlight from tree-sitter.
@@ -21,46 +24,20 @@ export function pluginCopyToClipboardButton() {
         }
 
         pre.children.push(
-          h(
-            "button",
-            {
-              className: "copy-button",
-              dataCode: codeBlock.code,
-            },
-            [
-              s(
-                "svg",
-                {
-                  ariaHidden: "true",
-                  className: "octicon octicon-copy size-4 show",
-                  fill: "rgb(145, 152, 161)",
-                  viewBox: "0 0 16 16",
-                },
-                [
-                  s("path", {
-                    d: "M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z",
-                  }),
-                  s("path", {
-                    d: "M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z",
-                  }),
-                ]
-              ),
-              s(
-                "svg",
-                {
-                  ariaHidden: "true",
-                  className: "octicon octicon-check size-4",
-                  fill: "rgb(87, 171, 90)",
-                  viewBox: "0 0 16 16",
-                },
-                [
-                  s("path", {
-                    d: "M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z",
-                  }),
-                ]
-              ),
-            ]
-          )
+          reactToHast(
+            <button
+              className="copy-button"
+              data-code={codeBlock.code}
+              type="button"
+            >
+              <CopyIcon
+                className="show size-4"
+                fill="rgb(145, 152, 161)"
+                size={16}
+              />
+              <CheckIcon className="size-4" fill="rgb(87, 171, 90)" size={16} />
+            </button>
+          ) as Node as Element
         )
       },
     },
@@ -99,10 +76,12 @@ export function pluginCopyToClipboardButton() {
       }
 
       function initButtons(container) {
-        for (const btn of container.querySelectorAll(
-          ".expressive-code .copy-button"
-        )) {
-          btn.addEventListener("click", clickHandler)
+        if (container?.querySelectorAll) {
+          for (const btn of container.querySelectorAll(
+            ".expressive-code .copy-button"
+          )) {
+            btn.addEventListener("click", clickHandler)
+          }
         }
       }
       initButtons(document)
@@ -113,10 +92,10 @@ export function pluginCopyToClipboardButton() {
             initButtons(node)
           }
         }
-      }).observe(document.body, { childList: true, subtree: true })
+      }).observe(document.getElementById("article"), { childList: true, subtree: true })
 
       document.addEventListener("astro:page-load", () => {
-        initButtons(document)
+        initButtons(document.getElementById("article"))
       })
     `,
     baseStyles: css`
@@ -142,7 +121,7 @@ export function pluginCopyToClipboardButton() {
         background: transparent;
 
         &:hover {
-          background: rgb(47, 55, 66); /* TODO: dark mode background color */
+          background: rgb(47, 55, 66);
         }
 
         /* hide copy button when there is no JavaScript */
