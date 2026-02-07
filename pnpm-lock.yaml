@@ -62,6 +62,12 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      hast-util-select:
+        specifier: ^6.0.4
+        version: 6.0.4
+      hastscript:
+        specifier: ^9.0.1
+        version: 9.0.1
       katex:
         specifier: ^0.16.28
         version: 0.16.28

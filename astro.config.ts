@@ -1,3 +1,4 @@
+import { rehypeHeadingIds } from "@astrojs/markdown-remark"
 import mdx from "@astrojs/mdx"
 import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
@@ -13,6 +14,7 @@ import remarkGithubAlerts from "remark-github-alerts"
 import remarkMath from "remark-math"
 import remarkToc from "remark-toc"
 import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-to-clipboard-button"
+import { rehypeHeadingAnchor } from "./src/plugins/rehype/heading-anchor"
 import { remarkDescription } from "./src/plugins/remark/description"
 import { remarkReadingTime } from "./src/plugins/remark/reading-time"
 
@@ -55,6 +57,8 @@ export default defineConfig({
   ],
   markdown: {
     rehypePlugins: [
+      [rehypeHeadingIds, { headingIdCompat: true }],
+      rehypeHeadingAnchor,
       [
         rehypeExternalLinks,
         {

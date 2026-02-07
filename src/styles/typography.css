@@ -42,7 +42,7 @@
     }
 
     hr {
-      @apply border-border;
+      @apply border-dashed border-border;
     }
 
     img {
