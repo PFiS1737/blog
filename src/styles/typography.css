@@ -1,4 +1,5 @@
 @import "katex/dist/katex.min.css";
+@import "remark-github-alerts/styles/github-base.css";
 
 @plugin "@tailwindcss/typography";
 
@@ -94,6 +95,14 @@
 
     .katex-display {
       @apply text-foreground;
+    }
+
+    .markdown-alert {
+      --color-note: rgb(71, 139, 230);
+      --color-tip: rgb(52, 125, 57);
+      --color-important: rgb(130, 86, 208);
+      --color-warning: rgb(150, 102, 0);
+      --color-caution: rgb(201, 60, 55);
     }
   }
 }
