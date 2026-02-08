@@ -1,5 +1,4 @@
 @import "katex/dist/katex.min.css";
-@import "remark-github-alerts/styles/github-base.css";
 
 @plugin "@tailwindcss/typography";
 
@@ -74,7 +73,7 @@
     }
 
     blockquote {
-      @apply border-s-accent/80 wrap-break-word opacity-80;
+      @apply mb-5 border-s-accent/80 wrap-break-word opacity-80;
     }
 
     details {
@@ -103,6 +102,47 @@
       --color-important: rgb(130, 86, 208);
       --color-warning: rgb(150, 102, 0);
       --color-caution: rgb(201, 60, 55);
+
+      @apply px-4 py-2 mb-5 border-s-4 border-solid *:first:mt-0 *:nth-2:mt-0 *:last:mb-0;
+
+      .markdown-alert-title {
+        @apply mb-4 flex items-center text-base/4 font-medium capitalize;
+
+        svg {
+          @apply mr-2;
+        }
+      }
+
+      &.markdown-alert-note {
+        border-left-color: var(--color-note);
+        .markdown-alert-title {
+          color: var(--color-note);
+        }
+      }
+      &.markdown-alert-tip {
+        border-left-color: var(--color-tip);
+        .markdown-alert-title {
+          color: var(--color-tip);
+        }
+      }
+      &.markdown-alert-important {
+        border-left-color: var(--color-important);
+        .markdown-alert-title {
+          color: var(--color-important);
+        }
+      }
+      &.markdown-alert-warning {
+        border-left-color: var(--color-warning);
+        .markdown-alert-title {
+          color: var(--color-warning);
+        }
+      }
+      &.markdown-alert-caution {
+        border-left-color: var(--color-caution);
+        .markdown-alert-title {
+          color: var(--color-caution);
+        }
+      }
     }
   }
 }

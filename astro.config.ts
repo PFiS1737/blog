@@ -10,10 +10,10 @@ import expressiveCode from "astro-expressive-code"
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeKatex from "rehype-katex"
 import remarkGemoji from "remark-gemoji"
-import remarkGithubAlerts from "remark-github-alerts"
 import remarkMath from "remark-math"
 import remarkToc from "remark-toc"
 import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-to-clipboard-button"
+import rehypeGithubAlerts from "./src/plugins/rehype/github-alerts"
 import { rehypeHeadingAnchor } from "./src/plugins/rehype/heading-anchor"
 import { remarkDescription } from "./src/plugins/remark/description"
 import { remarkReadingTime } from "./src/plugins/remark/reading-time"
@@ -59,6 +59,7 @@ export default defineConfig({
     rehypePlugins: [
       [rehypeHeadingIds, { headingIdCompat: true }],
       rehypeHeadingAnchor,
+      rehypeGithubAlerts,
       [
         rehypeExternalLinks,
         {
@@ -72,7 +73,6 @@ export default defineConfig({
       remarkDescription,
       remarkReadingTime,
       remarkToc,
-      remarkGithubAlerts,
       remarkMath,
       remarkGemoji,
     ],

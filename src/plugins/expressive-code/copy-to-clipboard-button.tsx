@@ -2,7 +2,6 @@
 
 import { definePlugin } from "@expressive-code/core"
 import { CheckIcon, CopyIcon } from "@primer/octicons-react"
-import type { Element, Node } from "hast"
 import { select } from "hast-util-select"
 import { reactToHast } from "../../utils/server"
 
@@ -37,7 +36,7 @@ export function pluginCopyToClipboardButton() {
               />
               <CheckIcon className="size-4" fill="rgb(87, 171, 90)" size={16} />
             </button>
-          ) as Node as Element
+          )
         )
       },
     },
