@@ -46,6 +46,7 @@ export default defineConfig({
         pluginCopyToClipboardButton(),
       ],
       styleOverrides: {
+        codeFontFamily: "monospace", // to use the default mono font you set in your browser's settings.
         frames: {
           frameBoxShadowCssValue: "none",
         },
@@ -76,6 +77,7 @@ export default defineConfig({
       remarkMath,
       remarkGemoji,
     ],
+    smartypants: false,
   },
   site: "https://pfis1737.github.io",
   trailingSlash: "never",

@@ -16,6 +16,8 @@ html {
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
+
+  --font-mono: monospace; /* To use the default mono font you set in your browser's settings. */
 }
 
 @layer base {

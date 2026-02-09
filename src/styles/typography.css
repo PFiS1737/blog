@@ -3,20 +3,30 @@
 @plugin "@tailwindcss/typography";
 
 @layer base {
-  /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
-    @apply prose;
+    @apply prose font-sans;
 
     h1,
     h2,
     h3,
     h4,
+    h5,
+    h6,
     th {
-      @apply mb-3 text-foreground;
+      @apply mb-4 mt-6 text-foreground;
     }
 
-    h3 {
-      @apply italic;
+    h1,
+    h2 {
+      @apply pb-2 border-foreground border-b border-b-muted;
+    }
+
+    h5 {
+      @apply text-sm;
+    }
+
+    h6 {
+      @apply text-[13.5px] leading-4 opacity-75;
     }
 
     p,
@@ -25,12 +35,13 @@
     ul,
     figcaption,
     table,
+    kbd,
     code {
       @apply text-foreground;
     }
 
     a {
-      @apply wrap-break-word text-foreground decoration-dashed underline-offset-4 hover:text-accent focus-visible:no-underline;
+      @apply wrap-break-word text-accent decoration-dashed underline-offset-4 focus-visible:no-underline;
     }
 
     ul {
@@ -73,7 +84,24 @@
     }
 
     blockquote {
-      @apply mb-5 border-s-accent/80 wrap-break-word opacity-80;
+      @apply mb-5 border-s-accent/75 wrap-break-word opacity-75 not-italic;
+
+      p:first-of-type {
+        &::before {
+          @apply content-none;
+        }
+        &::after {
+          @apply content-none;
+        }
+      }
+    }
+
+    sup:has(> a:only-child) {
+      @apply ml-1;
+    }
+
+    kbd {
+      @apply p-1 text-sm rounded font-mono border border-muted inset-shadow-[0_-2px_0_var(--muted)];
     }
 
     details {
@@ -86,6 +114,18 @@
 
     pre {
       @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
+    }
+
+    .footnotes {
+      @apply px-0 border-t border-t-muted text-sm opacity-75;
+
+      h2 {
+        @apply sr-only;
+      }
+
+      li {
+        @apply marker:text-foreground;
+      }
     }
 
     .expressive-code {
