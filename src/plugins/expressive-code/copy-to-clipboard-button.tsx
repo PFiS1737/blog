@@ -29,12 +29,8 @@ export function pluginCopyToClipboardButton() {
               data-code={codeBlock.code}
               type="button"
             >
-              <CopyIcon
-                className="show size-4"
-                fill="rgb(145, 152, 161)"
-                size={16}
-              />
-              <CheckIcon className="size-4" fill="rgb(87, 171, 90)" size={16} />
+              <CopyIcon className="show" fill="rgb(145, 152, 161)" size={16} />
+              <CheckIcon fill="rgb(87, 171, 90)" size={16} />
             </button>
           )
         )
@@ -141,8 +137,10 @@ export function pluginCopyToClipboardButton() {
         }
       }
 
-      .frame:not(:hover) .copy-button:not(.show) {
-        display: none;
+      @media (width >= 40rem) { /* sm: */
+        .frame:not(:hover) .copy-button:not(.show) {
+          display: none;
+        }
       }
 
       .frame:hover .copy-button:not(:hover) {
