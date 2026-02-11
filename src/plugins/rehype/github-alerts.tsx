@@ -45,13 +45,9 @@ export const rehypeGithubAlerts: RehypePlugin = () => {
         return
       }
 
-      const type = match[1]?.toLowerCase()
-
-      if (index === undefined || !parent) {
-        return
-      }
-
       text.value = text.value.slice(match[0].length).trimStart()
+
+      const type = match[1]?.toLowerCase()
 
       const Icon = ICONS[type as keyof typeof ICONS]
 

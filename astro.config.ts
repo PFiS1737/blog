@@ -33,6 +33,7 @@ export default defineConfig({
       filter: (page) => !page.endsWith("/archives"),
     }),
     expressiveCode({
+      cascadeLayer: "code",
       defaultProps: {
         showLineNumbers: false,
         wrap: false,
@@ -52,6 +53,8 @@ export default defineConfig({
         },
       },
       themes: ["github-dark"],
+      useStyleReset: false,
+      useThemedSelectionColors: true,
     }),
     mdx(),
     react(),

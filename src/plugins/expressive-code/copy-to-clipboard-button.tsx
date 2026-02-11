@@ -94,56 +94,50 @@ export function pluginCopyToClipboardButton() {
       })
     `,
     baseStyles: css`
-      .copy-button {
-        position: absolute;
-        right: 0px;
+      pre {
+        position: relative;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        .copy-button {
+          position: absolute;
+          right: 0px;
 
-        height: 32px;
-        width: 32px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-        margin: 8px;
-        padding: 0px;
-        border: none;
-        border-radius: 6px;
+          height: 32px;
+          width: 32px;
 
-        cursor: pointer;
-        user-select: none;
+          margin: 8px;
+          padding: 0px;
+          border: none;
+          border-radius: 6px;
 
-        background: transparent;
+          cursor: pointer;
+          user-select: none;
 
-        &:hover {
-          background: rgb(47, 55, 66);
-        }
+          background: transparent;
 
-        /* hide copy button when there is no JavaScript */
-        @media (scripting: none) {
-          display: none;
-        }
+          &:hover {
+            background: rgb(47, 55, 66);
+          }
 
-        /* RTL support: Code is always LTR, so the inline copy button
-          must match this to avoid overlapping the start of lines */
-        direction: ltr;
-        unicode-bidi: isolate;
-
-        svg {
-          display: none;
-        }
-        svg.show {
-          display: revert;
+          svg {
+            display: none;
+          }
+          svg.show {
+            display: revert;
+          }
         }
       }
 
       @media (width >= 40rem) { /* sm: */
-        .frame:not(:hover) .copy-button:not(.show) {
+        pre:not(:hover) .copy-button:not(.show) {
           display: none;
         }
       }
 
-      .frame:hover .copy-button:not(:hover) {
+      pre:hover .copy-button:not(:hover) {
         background: transparent;
       }
     `,

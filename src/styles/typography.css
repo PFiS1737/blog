@@ -40,6 +40,10 @@
       @apply text-foreground;
     }
 
+    del {
+      @apply opacity-50;
+    }
+
     a {
       @apply wrap-break-word text-accent decoration-dashed underline-offset-4 focus-visible:no-underline;
     }
@@ -113,7 +117,7 @@
     }
 
     pre {
-      @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
+      @apply focus-visible:outline-none;
     }
 
     .footnotes {
@@ -130,6 +134,11 @@
 
     .expressive-code {
       @apply mb-5;
+
+      /* Make sure the line number is correctly aligned when 'useStyleReset: false'. */
+      .gutter .ln {
+        @apply box-content!;
+      }
     }
 
     .katex-display {
