@@ -13,7 +13,7 @@ const { footer = false } = Astro.props
   {
     config.socialLinks.map((social) => (
       <LinkButton href={social.href} class:list={["pe-3", { "pt-2": !footer }]} title={social.title}>
-        <social.icon {...social.iconProps} class="size-6 fill-foreground" className="size-6 fill-foreground" />
+        <social.icon {...social.octiconProps} class="size-6 fill-foreground" className="size-6 fill-foreground" />
         <span class="sr-only">{social.title}</span>
       </LinkButton>
     ))
