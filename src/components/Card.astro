@@ -8,8 +8,7 @@ export interface Props extends Post {
 
 const { variant = "h2", id, filePath } = Astro.props
 
-const { title, description, publishDate, updateDate, readingTime } =
-  await renderPost(Astro.props)
+const { title, description, publishDate, updateDate, readingTime } = await renderPost(Astro.props)
 
 const transitionName = slugifyStr(title)
 ---
@@ -21,17 +20,11 @@ const transitionName = slugifyStr(title)
   >
     {
       variant === "h2" ? (
-        <h2
-          transition:name={transitionName}
-          class="text-lg font-medium decoration-dashed hover:underline"
-        >
+        <h2 transition:name={transitionName} class="text-lg font-medium decoration-dashed hover:underline">
           {title}
         </h2>
       ) : (
-        <h3
-          transition:name={transitionName}
-          class="text-lg font-medium decoration-dashed hover:underline"
-        >
+        <h3 transition:name={transitionName} class="text-lg font-medium decoration-dashed hover:underline">
           {title}
         </h3>
       )

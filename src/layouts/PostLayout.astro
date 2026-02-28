@@ -14,16 +14,7 @@ export interface Props {
 
 const { post, posts } = Astro.props
 
-const {
-  title,
-  author,
-  description,
-  publishDate,
-  updateDate,
-  tags,
-  Content,
-  readingTime,
-} = await renderPost(post)
+const { title, author, description, publishDate, updateDate, tags, Content, readingTime } = await renderPost(post)
 
 const layoutProps = {
   author,
@@ -44,20 +35,12 @@ const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
 const currentPostIndex = allPosts.findIndex((a) => a.id === post.id)
 
 const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null
-const nextPost =
-  currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null
+const nextPost = currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null
 ---
 
 <Layout {...layoutProps}>
-  <main
-    id="main-content"
-    class="mx-auto w-full max-w-app px-4 pb-8 mt-8"
-    data-pagefind-body
-  >
-    <h1
-      transition:name={transitionName}
-      class="inline-block text-2xl font-bold text-accent sm:text-3xl"
-    >
+  <main id="main-content" class="mx-auto w-full max-w-app px-4 pb-8 mt-8" data-pagefind-body>
+    <h1 transition:name={transitionName} class="inline-block text-2xl font-bold text-accent sm:text-3xl">
       {title}
     </h1>
     <div class="my-2 flex items-center gap-2">
@@ -81,14 +64,8 @@ const nextPost =
     <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       {
         prevPost && (
-          <a
-            href={getPath(prevPost.id, prevPost.filePath)}
-            class="flex w-full gap-1 hover:opacity-75"
-          >
-            <ChevronLeftIcon
-              size={24}
-              className="inline-block flex-none rtl:rotate-180"
-            />
+          <a href={getPath(prevPost.id, prevPost.filePath)} class="flex w-full gap-1 hover:opacity-75">
+            <ChevronLeftIcon size={24} className="inline-block flex-none rtl:rotate-180" />
             <div>
               <span>Previous Post</span>
               <div class="text-sm text-accent/85">{prevPost.title}</div>
@@ -106,10 +83,7 @@ const nextPost =
               <span>Next Post</span>
               <div class="text-sm text-accent/85">{nextPost.title}</div>
             </div>
-            <ChevronRightIcon
-              size={24}
-              className="inline-block flex-none rtl:rotate-180"
-            />
+            <ChevronRightIcon size={24} className="inline-block flex-none rtl:rotate-180" />
           </a>
         )
       }

@@ -3,22 +3,14 @@
 import type { RemarkPlugin } from "@astrojs/markdown-remark"
 import { toString as mdastToString } from "mdast-util-to-string"
 
-export const remarkDescription: RemarkPlugin = (options?: {
-  maxChars?: number
-}) => {
+export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number }) => {
   const maxChars = options?.maxChars || 200
 
   return (tree, { data }) => {
-    const findFirstParagraph = (
-      node: typeof tree | (typeof tree.children)[number]
-    ): string | undefined => {
+    const findFirstParagraph = (node: typeof tree | (typeof tree.children)[number]): string | undefined => {
       if ("children" in node && Array.isArray(node.children)) {
         for (const child of node.children) {
-          if (
-            child.type === "paragraph" &&
-            child.children.length > 0 &&
-            child.children[0].type !== "image"
-          ) {
+          if (child.type === "paragraph" && child.children.length > 0 && child.children[0].type !== "image") {
             const str = mdastToString(child).trim()
             if (str.length > 0) {
               return str
@@ -34,8 +26,7 @@ export const remarkDescription: RemarkPlugin = (options?: {
       return
     }
 
-    let summary =
-      data.astro?.frontmatter?.description || findFirstParagraph(tree)
+    let summary = data.astro?.frontmatter?.description || findFirstParagraph(tree)
 
     if (summary && data.astro?.frontmatter) {
       if (summary.length > maxChars) {

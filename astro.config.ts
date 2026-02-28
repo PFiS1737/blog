@@ -41,11 +41,7 @@ export default defineConfig({
       frames: {
         showCopyToClipboardButton: false, // Use our custom plugin instead
       },
-      plugins: [
-        pluginLineNumbers(),
-        pluginCollapsibleSections(),
-        pluginCopyToClipboardButton(),
-      ],
+      plugins: [pluginLineNumbers(), pluginCollapsibleSections(), pluginCopyToClipboardButton()],
       styleOverrides: {
         codeFontFamily: "monospace", // to use the default mono font you set in your browser's settings.
         frames: {
@@ -73,13 +69,7 @@ export default defineConfig({
       ],
       rehypeKatex,
     ],
-    remarkPlugins: [
-      remarkDescription,
-      remarkReadingTime,
-      remarkToc,
-      remarkMath,
-      remarkGemoji,
-    ],
+    remarkPlugins: [remarkDescription, remarkReadingTime, remarkToc, remarkMath, remarkGemoji],
     smartypants: false,
   },
   site: "https://pfis1737.github.io",

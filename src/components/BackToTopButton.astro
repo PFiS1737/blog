@@ -36,9 +36,7 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
   let lastVisible: boolean
   function handleScroll() {
     const btnContainer = document.querySelector("#back-to-top-btn-container")
-    const progressIndicator = btnContainer?.querySelector(
-      "button > span"
-    ) as HTMLElement | null
+    const progressIndicator = btnContainer?.querySelector("button > span") as HTMLElement | null
 
     const percent = getArticleProgress()
 

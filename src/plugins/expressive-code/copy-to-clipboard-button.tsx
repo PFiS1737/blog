@@ -24,11 +24,7 @@ export function pluginCopyToClipboardButton() {
 
         pre.children.push(
           reactToHast(
-            <button
-              className="copy-button"
-              data-code={codeBlock.code}
-              type="button"
-            >
+            <button className="copy-button" data-code={codeBlock.code} type="button">
               <CopyIcon className="show" fill="rgb(145, 152, 161)" size={16} />
               <CheckIcon fill="rgb(87, 171, 90)" size={16} />
             </button>

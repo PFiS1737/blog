@@ -14,8 +14,7 @@ export function getSortedPosts(posts: Post[]) {
     .filter(postsFilter)
     .sort(
       (a, b) =>
-        (b.data.updateDate ?? b.data.publishDate).getTime() -
-        (a.data.updateDate ?? a.data.publishDate).getTime()
+        (b.data.updateDate ?? b.data.publishDate).getTime() - (a.data.updateDate ?? a.data.publishDate).getTime()
     )
 }
 
@@ -24,19 +23,12 @@ export function getUniqueTags(posts: Post[]) {
     .filter(postsFilter)
     .flatMap((post) => post.data.tags)
     .map((tag) => ({ tag: slugifyStr(tag), tagName: tag }))
-    .filter(
-      (value, index, self) =>
-        self.findIndex((tag) => tag.tag === value.tag) === index
-    )
+    .filter((value, index, self) => self.findIndex((tag) => tag.tag === value.tag) === index)
     .sort((tagA, tagB) => tagA.tag.localeCompare(tagB.tag))
 }
 
 export function getPostsByTag(posts: Post[], tag: string) {
-  return getSortedPosts(
-    posts.filter((post) =>
-      post.data.tags.map((tag) => slugifyStr(tag)).includes(tag)
-    )
-  )
+  return getSortedPosts(posts.filter((post) => post.data.tags.map((tag) => slugifyStr(tag)).includes(tag)))
 }
 
 export function slugifyStr(str: string) {
@@ -50,11 +42,7 @@ export function slugifyStr(str: string) {
  * @param includeBase - whether to include `/posts` in return value
  * @returns blog post path
  */
-export function getPath(
-  id: string,
-  filePath: string | undefined,
-  includeBase = true
-) {
+export function getPath(id: string, filePath: string | undefined, includeBase = true) {
   const pathSegments = filePath
     ?.replace(BLOG_PATH, "")
     .split("/")

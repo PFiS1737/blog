@@ -17,27 +17,15 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
 <Layout>
   <main id="main-content">
     <section id="hero" class="pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Mingalaba
-      </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <RssIcon
-          size={24}
-          className="text-accent stroke-accent stroke-1 rtl:-rotate-90"
-        />
+      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">Mingalaba</h1>
+      <a target="_blank" href="/rss.xml" class="inline-block" aria-label="rss feed" title="RSS Feed">
+        <RssIcon size={24} className="text-accent stroke-accent stroke-1 rtl:-rotate-90" />
         <span class="sr-only">RSS Feed</span>
       </a>
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
+        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog theme. This theme follows best
+        practices and provides accessibility out of the box. Light and dark mode are supported by default. Moreover,
         additional color schemes can also be configured.
       </p>
       <p class="mt-2">
@@ -79,10 +67,7 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
           <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
           <ul>
             {recentPosts.map(
-              (post, index) =>
-                index < config.appearance.recentPostsCount && (
-                  <Card variant="h3" {...post} />
-                )
+              (post, index) => index < config.appearance.recentPostsCount && <Card variant="h3" {...post} />
             )}
           </ul>
         </section>
@@ -90,11 +75,7 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
     }
 
     <div class="mt-auto mb-8 text-center">
-      <LinkButton
-        href="/posts"
-        class="select-none inline-flex items-center gap-1"
-        ariaLabel="All Posts"
-      >
+      <LinkButton href="/posts" class="select-none inline-flex items-center gap-1" ariaLabel="All Posts">
         All Posts
         <ArrowRightIcon className="size-5 pb-1 rtl:rotate-180" />
       </LinkButton>

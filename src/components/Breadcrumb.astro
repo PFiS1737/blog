@@ -33,10 +33,7 @@ if (breadcrumbList[0] === "tags" && !Number.isNaN(Number(breadcrumbList[2]))) {
           </li>
         ) : (
           <li>
-            <span
-              class:list={["capitalize opacity-80", { lowercase: index > 0 }]}
-              aria-current="page"
-            >
+            <span class:list={["capitalize opacity-80", { lowercase: index > 0 }]} aria-current="page">
               {decodeURIComponent(breadcrumb)}
             </span>
           </li>

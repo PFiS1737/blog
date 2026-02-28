@@ -1,11 +1,5 @@
 import type { RehypePlugin } from "@astrojs/markdown-remark"
-import {
-  AlertIcon,
-  InfoIcon,
-  LightBulbIcon,
-  ReportIcon,
-  StopIcon,
-} from "@primer/octicons-react"
+import { AlertIcon, InfoIcon, LightBulbIcon, ReportIcon, StopIcon } from "@primer/octicons-react"
 import { visit } from "unist-util-visit"
 import { reactToHast } from "../../utils/server"
 
@@ -28,10 +22,7 @@ export const rehypeGithubAlerts: RehypePlugin = () => {
 
       const child = node.children[1] // NOTE: The first child is always a { type: 'text', value: '\n' }
       if (!(child.type === "element" && child.tagName === "p")) {
-        console.error(
-          "[rehypeGithubAlerts] Unexpected blockquote structure:",
-          node
-        )
+        console.error("[rehypeGithubAlerts] Unexpected blockquote structure:", node)
         return
       }
 

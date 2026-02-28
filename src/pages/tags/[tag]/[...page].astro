@@ -28,10 +28,7 @@ const { tag } = params
 const { page, tagName } = Astro.props
 ---
 
-<Layout
-  title={`Tag: ${tagName} | ${config.title}`}
-  footerNoMarginTop={page.lastPage > 1}
->
+<Layout title={`Tag: ${tagName} | ${config.title}`} footerNoMarginTop={page.lastPage > 1}>
   <Main
     pageTitle={[`Tag:`, `${tagName}`]}
     titleTransition={tag}

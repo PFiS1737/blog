@@ -1,10 +1,5 @@
 ---
-import {
-  ArchiveIcon,
-  SearchIcon,
-  ThreeBarsIcon,
-  XIcon,
-} from "@primer/octicons-react"
+import { ArchiveIcon, SearchIcon, ThreeBarsIcon, XIcon } from "@primer/octicons-react"
 import config from "@/site.config"
 import Hr from "./Hr.astro"
 import LinkButton from "./LinkButton.astro"
@@ -27,10 +22,7 @@ const isActive = (target: string) => {
   >
     Skip to content
   </a>
-  <div
-    id="nav-container"
-    class="mx-auto flex max-w-app flex-col items-center justify-between sm:flex-row"
-  >
+  <div id="nav-container" class="mx-auto flex max-w-app flex-col items-center justify-between sm:flex-row">
     <div
       id="top-nav-wrap"
       class="relative flex w-full items-baseline justify-between bg-background p-4 sm:items-center sm:py-6"
@@ -65,26 +57,19 @@ const isActive = (target: string) => {
           ]}
         >
           <li>
-            <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
-              Posts
-            </a>
+            <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}> Posts </a>
           </li>
           <li>
-            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
-              Tags
-            </a>
+            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}> Tags </a>
           </li>
           <li>
-            <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
-              About
-            </a>
+            <a href="/about" class:list={{ "active-nav": isActive("/about") }}> About </a>
           </li>
           <li>
             <LinkButton
               href="/archives"
               class:list={{
-                "active-nav [&>svg]:text-accent [&>svg]:stroke-accent":
-                  isActive("/archives"),
+                "active-nav [&>svg]:text-accent [&>svg]:stroke-accent": isActive("/archives"),
               }}
               ariaLabel="archives"
               title="Archives"
@@ -97,8 +82,7 @@ const isActive = (target: string) => {
             <LinkButton
               href="/search"
               class:list={{
-                "active-nav [&>svg]:text-accent [&>svg]:stroke-accent":
-                  isActive("/search"),
+                "active-nav [&>svg]:text-accent [&>svg]:stroke-accent": isActive("/search"),
               }}
               ariaLabel="search"
               title="Search"

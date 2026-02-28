@@ -9,33 +9,13 @@ export interface Props {
 const { footer = false } = Astro.props
 ---
 
-<div
-  class:list={[
-    "flex-wrap justify-center",
-    { "mt-2 mb-4 sm:mb-2 flex": footer },
-  ]}
->
+<div class:list={["flex-wrap justify-center", { "mt-2 mb-4 sm:mb-2 flex": footer }]}>
   {
-    config.socialLinks.map(
-      (social: {
-        title: string
-        href: string
-        icon: any
-        iconProps: { [k: string]: any }
-      }) => (
-        <LinkButton
-          href={social.href}
-          class:list={["pe-3", { "pt-2": !footer }]}
-          title={social.title}
-        >
-          <social.icon
-            {...social.iconProps}
-            class="size-6 fill-foreground"
-            className="size-6 fill-foreground"
-          />
-          <span class="sr-only">{social.title}</span>
-        </LinkButton>
-      )
-    )
+    config.socialLinks.map((social) => (
+      <LinkButton href={social.href} class:list={["pe-3", { "pt-2": !footer }]} title={social.title}>
+        <social.icon {...social.iconProps} class="size-6 fill-foreground" className="size-6 fill-foreground" />
+        <span class="sr-only">{social.title}</span>
+      </LinkButton>
+    ))
   }
 </div>
