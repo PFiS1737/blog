@@ -4,7 +4,6 @@ import Card from "@/components/Card.astro"
 import Layout from "@/layouts/Layout.astro"
 import Main from "@/layouts/Main.astro"
 import config from "@/site.config"
-import { getPostsByGroupCondition } from "@/utils"
 
 const posts = await getCollection("posts")
 
@@ -27,20 +26,16 @@ const MONTHS = [
 <Layout title={`Archives | ${config.title}`}>
   <Main pageTitle="Archives" pageDesc="All the articles I've archived.">
     {
-      [
-        ...getPostsByGroupCondition(posts, (post) =>
-          post.data.publishDate.getFullYear()
-        ).entries(),
-      ]
+      [...Map.groupBy(posts, (post) => post.data.publishDate.getFullYear())]
         .sort(([yearA], [yearB]) => yearB - yearA)
         .map(([year, yearGroup]) => (
           <div>
             <span class="text-2xl font-bold">{year}</span>
             {[
-              ...getPostsByGroupCondition(
+              ...Map.groupBy(
                 yearGroup,
                 (post) => post.data.publishDate.getMonth() + 1
-              ).entries(),
+              ),
             ]
               .sort(([monthA], [monthB]) => monthB - monthA)
               .map(([month, monthGroup]) => (

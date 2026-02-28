@@ -39,28 +39,6 @@ export function getPostsByTag(posts: Post[], tag: string) {
   )
 }
 
-export function getPostsByGroupCondition<T>(
-  posts: Post[],
-  groupFunction: (item: Post, index?: number) => T
-) {
-  const result = new Map<T, Post[]>()
-
-  posts.forEach((item, i) => {
-    const groupKey = groupFunction(item, i)
-
-    if (!result.has(groupKey)) {
-      result.set(groupKey, [])
-    }
-
-    // biome-ignore lint/style/noNonNullAssertion: safe
-    result.get(groupKey)!.push(item)
-  })
-
-  return result
-}
-
-export default getPostsByGroupCondition
-
 export function slugifyStr(str: string) {
   return kebabcase(str)
 }
