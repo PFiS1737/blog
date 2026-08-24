@@ -5,19 +5,20 @@ import { ArrowUpIcon, ChevronUpIcon } from "@primer/octicons-react"
 <div
   id="back-to-top-btn-container"
   class:list={[
-    "fixed end-4 bottom-8 z-50",
-    "sm:sticky sm:end-auto sm:float-end",
+    "fixed inset-e-4 bottom-8 z-50",
+    "sm:sticky sm:inset-e-auto sm:float-end",
     "translate-y-14 opacity-0 transition duration-500",
   ]}
 >
   <button
+    onclick="document.documentElement.scrollTop = 0"
+    type="button"
     class:list={[
       "group relative bg-background px-2 py-1",
       "size-14 rounded-full shadow-xl",
       "sm:h-8 sm:w-fit sm:rounded-md sm:shadow-none sm:focus-visible:rounded-none",
       "sm:bg-background/35 sm:bg-clip-padding sm:backdrop-blur-lg",
     ]}
-    onclick="document.documentElement.scrollTop = 0"
   >
     <span
       class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent sm:hidden sm:h-8 sm:rounded-md"

@@ -15,21 +15,21 @@ const transitionName = slugifyStr(title)
 
 <li class="my-6">
   <a
-    href={getPath(id, filePath)}
     class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+    href={getPath(id, filePath)}
   >
     {
       variant === "h2" ? (
-        <h2 transition:name={transitionName} class="text-lg font-medium decoration-dashed hover:underline">
+        <h2 class="text-lg font-medium decoration-dashed hover:underline" transition:name={transitionName}>
           {title}
         </h2>
       ) : (
-        <h3 transition:name={transitionName} class="text-lg font-medium decoration-dashed hover:underline">
+        <h3 class="text-lg font-medium decoration-dashed hover:underline" transition:name={transitionName}>
           {title}
         </h3>
       )
     }
   </a>
-  <PostInfo {publishDate} {updateDate} {readingTime} />
+  <PostInfo {publishDate} {readingTime} {updateDate} />
   <p>{description}</p>
 </li>

@@ -49,25 +49,14 @@
         "noForEach": "on",
         "noImportantStyles": "off",
         "noUselessStringConcat": "on",
+        "noUselessUndefined": "on",
         "noVoid": "on",
+        "useArrayFind": "on",
         "useSimplifiedLogicExpression": "on",
         "useWhile": "on"
       },
       "nursery": {
-        "noDeprecatedImports": "on",
-        "noDuplicateDependencies": "on",
-        "noEmptySource": "on",
-        "noEqualsToNull": "on",
-        "noFloatingPromises": "on",
-        "noIncrementDecrement": "on",
-        "noProto": "on",
-        "noUselessUndefined": "on",
-        "useFind": "on",
-        "useSortedClasses": {
-          "fix": "safe",
-          "level": "on",
-          "options": {}
-        }
+        "noFloatingPromises": "on"
       },
       "performance": {
         "noAwaitInLoops": "on",
@@ -75,13 +64,14 @@
         "useGoogleFontPreconnect": "on",
         "useTopLevelRegex": "on"
       },
-      "recommended": true,
+      "preset": "recommended",
       "security": {
         "noSecrets": "on"
       },
       "style": {
         "noCommonJs": "on",
         "noImplicitBoolean": "on",
+        "noIncrementDecrement": "on",
         "noInferrableTypes": "on",
         "noNegationElse": "on",
         "noParameterAssign": "on",
@@ -130,8 +120,13 @@
         "useUnifiedTypeSignatures": "on"
       },
       "suspicious": {
+        "noDeprecatedImports": "on",
+        "noDuplicateDependencies": "on",
         "noEmptyBlockStatements": "on",
+        "noEmptySource": "on",
+        "noEqualsToNull": "on",
         "noEvolvingTypes": "on",
+        "noProto": "on",
         "noUnassignedVariables": "on",
         "noVar": "on",
         "useAwait": "on",
@@ -141,6 +136,9 @@
   },
   "overrides": [
     {
+      "formatter": {
+        "enabled": false
+      },
       "includes": [
         "**/*.astro"
       ],

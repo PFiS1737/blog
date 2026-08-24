@@ -10,7 +10,7 @@ export const rehypeHeadingAnchor: RehypePlugin = () => {
     for (const heading of headings) {
       const text = (heading.children[0] as Text).value
 
-      heading.properties.className = "group"
+      heading.properties.className = ["group"]
 
       heading.children.push(
         reactToHast(

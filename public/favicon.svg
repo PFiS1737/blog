@@ -1,4 +1,5 @@
-<svg height="160" width="160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" height="160" width="160" xmlns="http://www.w3.org/2000/svg">
+  <title>PFiS</title>
   <style>
     rect {
       fill: #000;

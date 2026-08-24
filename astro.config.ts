@@ -1,4 +1,4 @@
-import { rehypeHeadingIds } from "@astrojs/markdown-remark"
+import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark"
 import mdx from "@astrojs/mdx"
 import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
@@ -22,7 +22,6 @@ import { remarkReadingTime } from "./src/plugins/remark/reading-time"
 export default defineConfig({
   experimental: {
     contentIntellisense: true,
-    preserveScriptOrder: true,
   },
   image: {
     layout: "constrained",
@@ -56,21 +55,24 @@ export default defineConfig({
     react(),
   ],
   markdown: {
-    rehypePlugins: [
-      [rehypeHeadingIds, { headingIdCompat: true }],
-      rehypeHeadingAnchor,
-      rehypeGithubAlerts,
-      [
-        rehypeExternalLinks,
-        {
-          rel: ["noreferrer", "noopener"],
-          target: "_blank",
-        },
+    // TODO: migrate to https://github.com/bruits/satteri
+    processor: unified({
+      rehypePlugins: [
+        [rehypeHeadingIds, { headingIdCompat: true }],
+        rehypeHeadingAnchor,
+        rehypeGithubAlerts,
+        [
+          rehypeExternalLinks,
+          {
+            rel: ["noreferrer", "noopener"],
+            target: "_blank",
+          },
+        ],
+        rehypeKatex,
       ],
-      rehypeKatex,
-    ],
-    remarkPlugins: [remarkDescription, remarkReadingTime, remarkToc, remarkMath, remarkGemoji],
-    smartypants: false,
+      remarkPlugins: [remarkDescription, remarkReadingTime, remarkToc, remarkMath, remarkGemoji],
+      smartypants: false,
+    }),
   },
   site: "https://pfis1737.github.io",
   trailingSlash: "never",

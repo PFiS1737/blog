@@ -14,26 +14,26 @@ if (breadcrumbList[0] === "tags" && !Number.isNaN(Number(breadcrumbList[2]))) {
 }
 ---
 
-<nav class="mx-auto mt-8 mb-2 w-full max-w-app px-4" aria-label="breadcrumb">
+<nav aria-label="breadcrumb" class="mx-auto mt-8 mb-2 w-full max-w-app px-4">
   <ul class="font-light [&>li]:inline">
     <li>
-      <a href="/" class="opacity-80">Home</a>
-      <span aria-hidden="true" class="opacity-80">&raquo;</span>
+      <a class="opacity-80" href="/">Home</a>
+      <span aria-hidden="true" class="opacity-80">&nbsp;&raquo;&nbsp;</span>
     </li>
     {
       breadcrumbList.map((breadcrumb, index) =>
         index + 1 < breadcrumbList.length ? (
           <li>
-            <a href={`/${breadcrumb}`} class="capitalize opacity-80">
+            <a class="capitalize opacity-80" href={`/${breadcrumb}`}>
               {breadcrumb}
             </a>
             <span aria-hidden="true" class="opacity-80">
-              &raquo;
+              &nbsp;&raquo;&nbsp;
             </span>
           </li>
         ) : (
           <li>
-            <span class:list={["capitalize opacity-80", { lowercase: index > 0 }]} aria-current="page">
+            <span aria-current="page" class:list={["capitalize opacity-80", { lowercase: index > 0 }]}>
               {decodeURIComponent(breadcrumb)}
             </span>
           </li>

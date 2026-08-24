@@ -10,7 +10,7 @@ const tags = getUniqueTags(await getCollection("posts"))
 ---
 
 <Layout title={`Tags | ${config.title}`}>
-  <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
+  <Main pageDesc="All the tags used in posts." pageTitle="Tags">
     <ul>
       {tags.map(({ tag, tagName }) => <Tag {tag} {tagName} size="lg" />)}
     </ul>

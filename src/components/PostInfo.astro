@@ -22,7 +22,7 @@ const textSizeClassList = ["text-sm", { "sm:text-base": size === "lg" }]
 
 <div class:list={["flex items-center gap-x-2 opacity-80", className]}>
   {isModified && <span class:list={textSizeClassList}>Updated:</span>}
-  <RelativeTime client:load className={clsx(textSizeClassList)} date={date} prefix="" />
+  <RelativeTime className={clsx(textSizeClassList)} date={date} prefix="" client:load />
   <span class:list={textSizeClassList}>|</span>
   <span class:list={textSizeClassList}>{readingTime.text}</span>
 </div>

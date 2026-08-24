@@ -16,10 +16,10 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
 
 <Layout>
   <main id="main-content">
-    <section id="hero" class="pt-8 pb-6">
+    <section class="pt-8 pb-6" id="hero">
       <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">Mingalaba</h1>
-      <a target="_blank" href="/rss.xml" class="inline-block" aria-label="rss feed" title="RSS Feed">
-        <RssIcon size={24} className="text-accent stroke-accent stroke-1 rtl:-rotate-90" />
+      <a aria-label="rss feed" class="inline-block" href="/rss.xml" target="_blank" title="RSS Feed">
+        <RssIcon className="text-accent stroke-accent stroke-1 rtl:-rotate-90" size={24} />
         <span class="sr-only">RSS Feed</span>
       </a>
 
@@ -29,7 +29,7 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
         additional color schemes can also be configured.
       </p>
       <p class="mt-2">
-        Read the blog posts or check
+        Read the blog posts or check&nbsp;
         <LinkButton
           class="underline decoration-dashed underline-offset-4 hover:text-accent"
           href="https://github.com/satnaing/astro-paper#readme"
@@ -48,7 +48,7 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured" class="pt-12 pb-6">
+          <section class="pt-12 pb-6" id="featured">
             <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
             <ul>
               {featuredPosts.map((post) => (
@@ -63,7 +63,7 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
+        <section class="pt-12 pb-6" id="recent-posts">
           <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
           <ul>
             {recentPosts.map(
@@ -75,7 +75,7 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
     }
 
     <div class="mt-auto mb-8 text-center">
-      <LinkButton href="/posts" class="select-none inline-flex items-center gap-1" ariaLabel="All Posts">
+      <LinkButton class="select-none inline-flex items-center gap-1" href="/posts">
         All Posts
         <ArrowRightIcon className="size-5 pb-1 rtl:rotate-180" />
       </LinkButton>

@@ -24,7 +24,7 @@ const MONTHS = [
 ---
 
 <Layout title={`Archives | ${config.title}`}>
-  <Main pageTitle="Archives" pageDesc="All the articles I've archived.">
+  <Main pageDesc="All the articles I've archived." pageTitle="Archives">
     {
       [...Map.groupBy(posts, (post) => post.data.publishDate.getFullYear())]
         .sort(([yearA], [yearB]) => yearB - yearA)

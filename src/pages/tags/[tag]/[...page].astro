@@ -28,12 +28,8 @@ const { tag } = params
 const { page, tagName } = Astro.props
 ---
 
-<Layout title={`Tag: ${tagName} | ${config.title}`} footerNoMarginTop={page.lastPage > 1}>
-  <Main
-    pageTitle={[`Tag:`, `${tagName}`]}
-    titleTransition={tag}
-    pageDesc={`All the articles with the tag "${tagName}".`}
-  >
+<Layout footerNoMarginTop={page.lastPage > 1} title={`Tag: ${tagName} | ${config.title}`}>
+  <Main pageDesc={`All the articles with the tag "${tagName}".`} pageTitle={["Tag:", tagName]} titleTransition={tag}>
     <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
     <ul>
       {page.data.map((post) => <Card {...post} />)}

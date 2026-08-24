@@ -16,33 +16,34 @@ const isActive = (target: string) => {
 
 <header>
   <a
-    id="skip-to-content"
+    class="absolute inset-s-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4"
     href="#main-content"
-    class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4"
+    id="skip-to-content"
   >
     Skip to content
   </a>
-  <div id="nav-container" class="mx-auto flex max-w-app flex-col items-center justify-between sm:flex-row">
+  <div class="mx-auto flex max-w-app flex-col items-center justify-between sm:flex-row" id="nav-container">
     <div
-      id="top-nav-wrap"
       class="relative flex w-full items-baseline justify-between bg-background p-4 sm:items-center sm:py-6"
+      id="top-nav-wrap"
     >
       <a
-        href="/"
         class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+        href="/"
       >
         {config.title}
       </a>
       <nav
-        id="nav-menu"
         class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
+        id="nav-menu"
       >
         <button
-          id="menu-btn"
-          class="self-end p-2 sm:hidden"
-          aria-label="Open Menu"
-          aria-expanded="false"
           aria-controls="menu-items"
+          aria-expanded="false"
+          aria-label="Open Menu"
+          class="self-end p-2 sm:hidden"
+          id="menu-btn"
+          type="button"
         >
           <ThreeBarsIcon />
           <XIcon className="hidden" />
@@ -68,26 +69,24 @@ const isActive = (target: string) => {
           <li>
             <LinkButton
               href="/archives"
+              title="Archives"
               class:list={{
                 "active-nav [&>svg]:text-accent [&>svg]:stroke-accent": isActive("/archives"),
               }}
-              ariaLabel="archives"
-              title="Archives"
             >
-              <ArchiveIcon size={24} className="hidden sm:block" />
+              <ArchiveIcon className="hidden sm:block" size={24} />
               <span class="sm:sr-only">Archives</span>
             </LinkButton>
           </li>
           <li>
             <LinkButton
               href="/search"
+              title="Search"
               class:list={{
                 "active-nav [&>svg]:text-accent [&>svg]:stroke-accent": isActive("/search"),
               }}
-              ariaLabel="search"
-              title="Search"
             >
-              <SearchIcon size={24} className="hidden sm:block" />
+              <SearchIcon className="hidden sm:block" size={24} />
               <span class="sm:sr-only">Search</span>
             </LinkButton>
           </li>
