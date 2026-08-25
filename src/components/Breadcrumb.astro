@@ -18,7 +18,7 @@ if (breadcrumbList[0] === "tags" && !Number.isNaN(Number(breadcrumbList[2]))) {
   <ul class="font-light [&>li]:inline">
     <li>
       <a class="opacity-80" href="/">Home</a>
-      <span aria-hidden="true" class="opacity-80">&nbsp;&raquo;&nbsp;</span>
+      <span aria-hidden="true" class="opacity-80 mx-2">&raquo;</span>
     </li>
     {
       breadcrumbList.map((breadcrumb, index) =>
@@ -27,8 +27,8 @@ if (breadcrumbList[0] === "tags" && !Number.isNaN(Number(breadcrumbList[2]))) {
             <a class="capitalize opacity-80" href={`/${breadcrumb}`}>
               {breadcrumb}
             </a>
-            <span aria-hidden="true" class="opacity-80">
-              &nbsp;&raquo;&nbsp;
+            <span aria-hidden="true" class="opacity-80 mx-2">
+              &raquo;
             </span>
           </li>
         ) : (
