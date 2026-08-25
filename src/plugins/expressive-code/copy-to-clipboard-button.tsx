@@ -3,7 +3,7 @@
 import { definePlugin } from "@expressive-code/core"
 import { CheckIcon, CopyIcon } from "@primer/octicons-react"
 import { select } from "hast-util-select"
-import { reactToHast } from "../../utils/server"
+import { reactToHast } from "@/utils/server"
 
 /**
  * Helper functions so that we can have a syntax highlight from tree-sitter.

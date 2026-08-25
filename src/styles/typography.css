@@ -156,10 +156,6 @@
 
       .markdown-alert-title {
         @apply mb-4 flex items-center text-base/4 font-medium capitalize;
-
-        svg {
-          @apply mr-2;
-        }
       }
 
       &.markdown-alert-note {

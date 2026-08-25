@@ -1,4 +1,4 @@
-import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark"
+import { satteri, satteriHeadingIdsPlugin } from "@astrojs/markdown-satteri"
 import mdx from "@astrojs/mdx"
 import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
@@ -7,16 +7,15 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig } from "astro/config"
 import expressiveCode from "astro-expressive-code"
-import rehypeExternalLinks from "rehype-external-links"
-import rehypeKatex from "rehype-katex"
-import remarkGemoji from "remark-gemoji"
-import remarkMath from "remark-math"
-import remarkToc from "remark-toc"
 import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-to-clipboard-button"
-import rehypeGithubAlerts from "./src/plugins/rehype/github-alerts"
-import { rehypeHeadingAnchor } from "./src/plugins/rehype/heading-anchor"
-import { remarkDescription } from "./src/plugins/remark/description"
-import { remarkReadingTime } from "./src/plugins/remark/reading-time"
+import { externalLinks } from "./src/plugins/hast/external-links"
+import { githubAlerts } from "./src/plugins/hast/github-alerts"
+import { headingAnchor } from "./src/plugins/hast/heading-anchor"
+import { description } from "./src/plugins/mdast/description"
+import { gemoji } from "./src/plugins/mdast/gemoji"
+import { katex } from "./src/plugins/mdast/katex"
+import { readingTime } from "./src/plugins/mdast/reading-time"
+import { toc } from "./src/plugins/mdast/toc"
 
 // https://astro.build/config
 export default defineConfig({
@@ -42,7 +41,7 @@ export default defineConfig({
       },
       plugins: [pluginLineNumbers(), pluginCollapsibleSections(), pluginCopyToClipboardButton()],
       styleOverrides: {
-        codeFontFamily: "monospace", // to use the default mono font you set in your browser's settings.
+        codeFontFamily: "monospace", // to use the default mono font setting in your browser.
         frames: {
           frameBoxShadowCssValue: "none",
         },
@@ -55,23 +54,10 @@ export default defineConfig({
     react(),
   ],
   markdown: {
-    // TODO: migrate to https://github.com/bruits/satteri
-    processor: unified({
-      rehypePlugins: [
-        [rehypeHeadingIds, { headingIdCompat: true }],
-        rehypeHeadingAnchor,
-        rehypeGithubAlerts,
-        [
-          rehypeExternalLinks,
-          {
-            rel: ["noreferrer", "noopener"],
-            target: "_blank",
-          },
-        ],
-        rehypeKatex,
-      ],
-      remarkPlugins: [remarkDescription, remarkReadingTime, remarkToc, remarkMath, remarkGemoji],
-      smartypants: false,
+    processor: satteri({
+      features: { math: true, smartPunctuation: false },
+      hastPlugins: [satteriHeadingIdsPlugin(), headingAnchor(), githubAlerts(), externalLinks()],
+      mdastPlugins: [gemoji(), description(), readingTime(), toc(), katex()],
     }),
   },
   site: "https://pfis1737.github.io",

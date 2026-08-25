@@ -1,10 +1,10 @@
-import type { Element } from "hast"
+import type { Element, Root } from "hast"
 import type { ReactElement } from "react"
 import { renderToStaticMarkup } from "react-dom/server"
-import rehypeParse from "rehype-parse"
-import { unified } from "unified"
+import { htmlToHast } from "satteri"
 
 export function reactToHast(element: ReactElement) {
   const html = renderToStaticMarkup(element)
-  return unified().use(rehypeParse, { fragment: true }).parse(html).children[0] as Element
+  const root = htmlToHast(html, { fragment: true }) as Root
+  return root.children[0] as Element
 }
