@@ -11,7 +11,7 @@ export const externalLinks = () => {
         if (typeof href === "string" && href.startsWith("http")) {
           ctx.setProperty(node, "target", "_blank")
           ctx.setProperty(node, "rel", "noopener noreferrer")
-          ctx.appendChild(node, reactToHast(<LinkExternalIcon className="ms-1 inline-block align-sub!" size={16} />))
+          ctx.appendChild(node, reactToHast(<LinkExternalIcon className="ms-1 inline-block" size={16} />))
         }
       },
     },

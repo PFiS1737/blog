@@ -59,3 +59,7 @@ html {
 :target {
   scroll-margin-block: 1.5rem;
 }
+
+svg.octicon {
+  @apply align-sub!;
+}
