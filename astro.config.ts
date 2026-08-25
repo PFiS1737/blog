@@ -55,7 +55,15 @@ export default defineConfig({
   ],
   markdown: {
     processor: satteri({
-      features: { math: true, smartPunctuation: false },
+      features: {
+        gfm: {
+          footnotes: {
+            backContent: "^",
+          },
+        },
+        math: true,
+        smartPunctuation: false,
+      },
       hastPlugins: [satteriHeadingIdsPlugin(), headingAnchor(), githubAlerts(), externalLinks()],
       mdastPlugins: [gemoji(), description(), readingTime(), toc(), katex()],
     }),
