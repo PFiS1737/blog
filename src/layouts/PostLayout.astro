@@ -16,14 +16,6 @@ const { post, posts } = Astro.props
 
 const { title, author, description, publishDate, updateDate, tags, Content, readingTime } = await renderPost(post)
 
-const layoutProps = {
-  author,
-  description,
-  publishDate,
-  title: `${title} | ${config.title}`,
-  updateDate,
-}
-
 const transitionName = slugifyStr(title)
 
 const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
@@ -38,7 +30,13 @@ const prevPost = currentPostIndex === 0 ? null : allPosts[currentPostIndex - 1]
 const nextPost = currentPostIndex === allPosts.length ? null : allPosts[currentPostIndex + 1]
 ---
 
-<Layout {...layoutProps}>
+<Layout {author} {description} title=`${title} | ${config.title}`>
+  <Fragment slot="head">
+    <!-- Article Published/Modified time -->
+    {publishDate && <meta content={publishDate.toISOString()} property="article:published_time" />}
+    {updateDate && <meta content={updateDate.toISOString()} property="article:modified_time" />}
+  </Fragment>
+
   <main class="mx-auto w-full max-w-app px-4 pb-8 mt-8" data-pagefind-body id="main-content">
     <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" transition:name={transitionName}>
       {title}
@@ -87,10 +85,22 @@ const nextPost = currentPostIndex === allPosts.length ? null : allPosts[currentP
       }
     </div>
   </main>
+
+  <div class="progress-container fixed top-0 z-10 h-1 w-full bg-background">
+    <div class="progress-bar h-1 w-0 bg-accent"></div>
+  </div>
 </Layout>
 
 <script>
-  // Go to page start after page swap
+  import { getArticleProgress } from "@/utils/client"
+
+  document.addEventListener("scroll", () => {
+    const percent = getArticleProgress()
+    const bar = document.querySelector(".progress-bar") as HTMLDivElement
+    bar.style.width = `${percent}%`
+  })
+
+  // Go to page start after post swap
   document.addEventListener("astro:after-swap", () =>
     window.scrollTo({
       behavior: "instant",

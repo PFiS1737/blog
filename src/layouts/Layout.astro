@@ -12,8 +12,6 @@ export interface Props {
   profile?: string
   description?: string
   canonicalUrl?: string
-  publishDate?: Date
-  updateDate?: Date | null
   footerNoMarginTop?: boolean
 }
 
@@ -22,8 +20,6 @@ const {
   author = config.author,
   description = config.description,
   canonicalUrl = new URL(Astro.url.pathname, Astro.url),
-  publishDate,
-  updateDate,
   footerNoMarginTop = false,
 } = Astro.props
 ---
@@ -49,10 +45,6 @@ const {
     <meta content={description} property="og:description" />
     <meta content={canonicalUrl} property="og:url" />
 
-    <!-- Article Published/Modified time -->
-    {publishDate && <meta content={publishDate.toISOString()} property="article:published_time" />}
-    {updateDate && <meta content={updateDate.toISOString()} property="article:modified_time" />}
-
     <!-- Twitter -->
     <meta content="summary_large_image" property="twitter:card" />
     <meta content={canonicalUrl} property="twitter:url" />
@@ -62,6 +54,9 @@ const {
     <!-- Enable RSS feed auto-discovery  -->
     <link href={new URL("rss.xml", Astro.site)} rel="alternate" title={config.title} type="application/rss+xml" />
 
+    <!-- Extra head content injected by child layouts (e.g. JSON-LD, article meta) -->
+    <slot name="head" />
+
     <ClientRouter />
   </head>
   <body
@@ -70,18 +65,5 @@ const {
     <Header />
     <slot />
     <Footer noMarginTop={footerNoMarginTop} />
-    <div class="progress-container fixed top-0 z-10 h-1 w-full bg-background">
-      <div class="progress-bar h-1 w-0 bg-accent"></div>
-    </div>
   </body>
 </html>
-
-<script>
-  import { getArticleProgress } from "@/utils/client"
-
-  document.addEventListener("scroll", () => {
-    const percent = getArticleProgress()
-    const bar = document.querySelector(".progress-bar") as HTMLDivElement
-    bar.style.width = `${percent}%`
-  })
-</script>
