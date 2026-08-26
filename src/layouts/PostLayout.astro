@@ -43,9 +43,7 @@ const nextPost = currentPostIndex === allPosts.length ? null : allPosts[currentP
     <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" transition:name={transitionName}>
       {title}
     </h1>
-    <div class="my-2 flex items-center gap-2">
-      <PostInfo {publishDate} {readingTime} size="lg" {updateDate} />
-    </div>
+    <PostInfo class="my-2" {publishDate} {readingTime} size="lg" {updateDate} />
     <article class="app-prose mx-auto mt-8 max-w-app" id="article">
       <Content />
     </article>
