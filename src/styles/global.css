@@ -6,7 +6,9 @@ html {
   --background: #212737;
   --foreground: #eaedf3;
   --accent: #ff6b01;
+  --accent-foreground: #ffffff;
   --muted: #343f60;
+  --muted-foreground: #afb9ca;
   --border: #ab4b08;
 }
 
@@ -14,7 +16,9 @@ html {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
 
   --font-mono: monospace; /* To use the default mono font you set in your browser's settings. */
@@ -25,12 +29,6 @@ html {
     scrollbar-color: var(--color-muted) transparent;
     scrollbar-width: auto;
     @apply border-border outline-accent/75;
-  }
-  html {
-    @apply overflow-y-scroll scroll-smooth;
-  }
-  body {
-    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
   }
   a,
   button {
@@ -50,7 +48,7 @@ html {
   @apply max-w-3xl;
 }
 
-.active-nav {
+@utility active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-4;
 }
 

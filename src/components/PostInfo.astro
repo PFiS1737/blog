@@ -20,7 +20,7 @@ const date = isModified ? updateDate : publishDate
 const textSizeClassList = ["text-sm", { "sm:text-base": size === "lg" }]
 ---
 
-<div class:list={["flex items-center gap-x-2 opacity-80", className]}>
+<div class:list={["flex items-center gap-x-2 text-muted-foreground", className]}>
   {isModified && <span class:list={textSizeClassList}>Updated:</span>}
   <RelativeTime className={clsx(textSizeClassList)} date={date} prefix="" client:load />
   <span class:list={textSizeClassList}>|</span>

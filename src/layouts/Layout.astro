@@ -29,7 +29,7 @@ const {
 ---
 
 <!doctype html>
-<html dir="ltr" lang="en">
+<html class="overflow-y-scroll scroll-smooth" dir="ltr" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width" name="viewport" />
@@ -64,7 +64,9 @@ const {
 
     <ClientRouter />
   </head>
-  <body>
+  <body
+    class="flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-accent-foreground"
+  >
     <Header />
     <slot />
     <Footer noMarginTop={footerNoMarginTop} />
