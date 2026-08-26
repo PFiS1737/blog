@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap"
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import tailwindcss from "@tailwindcss/vite"
-import { defineConfig } from "astro/config"
+import { defineConfig, svgoOptimizer } from "astro/config"
 import expressiveCode from "astro-expressive-code"
 import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-to-clipboard-button"
 import { externalLinks } from "./src/plugins/hast/external-links"
@@ -22,6 +22,7 @@ import { toc } from "./src/plugins/mdast/toc"
 export default defineConfig({
   experimental: {
     contentIntellisense: true,
+    svgOptimizer: svgoOptimizer(),
   },
   image: {
     layout: "constrained",
