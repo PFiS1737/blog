@@ -3,7 +3,7 @@
 import { nameToEmoji } from "gemoji"
 import { defineMdastPlugin } from "satteri"
 
-const REGEX = /:(\+1|[-\w]+):/g
+const GEMOJI_REGEX = /:(\+1|[-\w]+):/g
 
 export const gemoji = () => {
   return defineMdastPlugin({
@@ -12,7 +12,7 @@ export const gemoji = () => {
       ctx.setProperty(
         node,
         "value",
-        node.value.replaceAll(REGEX, (s, $1) => (Object.hasOwn(nameToEmoji, $1) ? nameToEmoji[$1] : s))
+        node.value.replaceAll(GEMOJI_REGEX, (s, name) => nameToEmoji[name] ?? s)
       )
     },
   })

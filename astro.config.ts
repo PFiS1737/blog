@@ -11,6 +11,7 @@ import { pluginCopyToClipboardButton } from "./src/plugins/expressive-code/copy-
 import { externalLinks } from "./src/plugins/hast/external-links"
 import { githubAlerts } from "./src/plugins/hast/github-alerts"
 import { headingAnchor } from "./src/plugins/hast/heading-anchor"
+import { wrapEmojis } from "./src/plugins/hast/wrap-emojis"
 import { description } from "./src/plugins/mdast/description"
 import { gemoji } from "./src/plugins/mdast/gemoji"
 import { katex } from "./src/plugins/mdast/katex"
@@ -64,7 +65,7 @@ export default defineConfig({
         math: true,
         smartPunctuation: false,
       },
-      hastPlugins: [satteriHeadingIdsPlugin(), headingAnchor(), githubAlerts(), externalLinks()],
+      hastPlugins: [satteriHeadingIdsPlugin(), headingAnchor(), githubAlerts(), wrapEmojis(), externalLinks()],
       mdastPlugins: [gemoji(), description(), readingTime(), toc(), katex()],
     }),
   },
