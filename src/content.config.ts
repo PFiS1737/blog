@@ -29,4 +29,8 @@ const posts = defineCollection({
     }),
 })
 
-export const collections = { posts }
+const pages = defineCollection({
+  loader: glob({ base: "./src/content/pages", pattern: "**/[^_]*.{md,mdx}" }),
+})
+
+export const collections = { pages, posts }

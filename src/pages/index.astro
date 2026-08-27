@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, getEntry, render } from "astro:content"
 import { ArrowRightIcon, RssIcon } from "@primer/octicons-react"
 import Card from "@/components/Card.astro"
 import Hr from "@/components/Hr.astro"
@@ -8,6 +8,14 @@ import Socials from "@/components/Socials.astro"
 import Layout from "@/layouts/Layout.astro"
 import config from "@/site.config"
 import { getSortedPosts } from "@/utils"
+
+const main = await getEntry("pages", "main")
+
+if (!main) {
+  throw new Error("Missing content entry: `main.md` or `main.mdx` in `src/content/pages/`")
+}
+
+const { Content } = await render(main)
 
 const posts = getSortedPosts(await getCollection("posts"))
 const featuredPosts = posts.filter(({ data }) => data.featured)
@@ -22,22 +30,10 @@ const recentPosts = posts.filter(({ data }) => !data.featured)
         <RssIcon className="ms-1 text-accent stroke-accent stroke-1 rtl:-rotate-90" size={24} />
         <span class="sr-only">RSS Feed</span>
       </a>
-
-      <p class="text-base">
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog theme. This theme follows best
-        practices and provides accessibility out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p>
-      <p class="mt-4 text-base">
-        Read the blog posts or check&nbsp;
-        <LinkButton
-          class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
-      </p>
-      <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
+      <div class="text-base [&_p]:mb-4 [&_a]:text-accent [&_.octicon]:mb-0.5">
+        <Content />
+      </div>
+      <div class="flex flex-col sm:flex-row sm:items-center">
         <div class="me-3 mb-1 whitespace-nowrap sm:mb-0 text-base">Social Links:</div>
         <Socials />
       </div>

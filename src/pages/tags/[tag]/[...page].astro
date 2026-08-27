@@ -23,8 +23,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   })
 }
 
-const params = Astro.params
-const { tag } = params
+const { tag } = Astro.params
 const { page, tagName } = Astro.props
 ---
 
