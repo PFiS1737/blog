@@ -112,7 +112,7 @@ export function pluginCopyToClipboardButton() {
           cursor: pointer;
           user-select: none;
 
-          background: transparent;
+          background: var(--code-background);
 
           &:hover {
             background: rgb(47, 55, 66);
@@ -131,10 +131,6 @@ export function pluginCopyToClipboardButton() {
         pre:not(:hover) .copy-button:not(.show) {
           display: none;
         }
-      }
-
-      pre:hover .copy-button:not(:hover) {
-        background: transparent;
       }
     `,
   })
