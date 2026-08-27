@@ -19,7 +19,7 @@ const { page } = Astro.props
         href={page.url.prev as string}
         class:list={["me-4 select-none inline-flex items-center gap-1", { "opacity-50": !page.url.prev }]}
       >
-        <ArrowLeftIcon className="size-5 pb-1 rtl:rotate-180" />
+        <ArrowLeftIcon className="size-5 rtl:rotate-180" />
         Prev
       </LinkButton>
       {page.currentPage} / {page.lastPage}
@@ -29,7 +29,7 @@ const { page } = Astro.props
         class:list={["ms-4 select-none inline-flex items-center gap-1", { "opacity-50": !page.url.next }]}
       >
         Next
-        <ArrowRightIcon className="size-5 pb-1 rtl:rotate-180" />
+        <ArrowRightIcon className="size-5 rtl:rotate-180" />
       </LinkButton>
     </nav>
   )
