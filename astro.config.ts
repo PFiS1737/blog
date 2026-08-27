@@ -74,8 +74,5 @@ export default defineConfig({
   trailingSlash: "never",
   vite: {
     plugins: [tailwindcss()],
-    resolve: {
-      noExternal: ["@primer/react"],
-    },
   },
 })

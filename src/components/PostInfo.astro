@@ -1,6 +1,4 @@
 ---
-import { RelativeTime } from "@primer/react"
-import clsx from "clsx"
 import type { ReadTimeResults } from "reading-time"
 
 export interface Props {
@@ -16,13 +14,17 @@ const { publishDate, updateDate, readingTime, size = "sm", class: className = ""
 const isModified = updateDate && updateDate > publishDate
 
 const date = isModified ? updateDate : publishDate
-
-const textSizeClassList = ["text-sm", { "sm:text-base": size === "lg" }]
 ---
 
-<div class:list={["flex items-center gap-x-2 text-muted-foreground", className]}>
-  {isModified && <span class:list={textSizeClassList}>Updated:</span>}
-  <RelativeTime className={clsx(textSizeClassList)} date={date} prefix="" client:load />
-  <span class:list={textSizeClassList}>|</span>
-  <span class:list={textSizeClassList}>{readingTime.text}</span>
+<div
+  class:list={["flex items-center gap-x-2 text-muted-foreground text-sm", { "sm:text-base": size === "lg" }, className]}
+>
+  {isModified && <span>Updated:</span>}
+  <relative-time datetime={date.toISOString()} prefix="">{date.toLocaleString()}</relative-time>
+  <span>|</span>
+  <span>{readingTime.text}</span>
 </div>
+
+<script>
+  import "@github/relative-time-element"
+</script>
