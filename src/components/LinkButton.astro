@@ -12,12 +12,19 @@ const { id, href, class: className = "", title, disabled = false } = Astro.props
 
 {
   disabled ? (
-    <span aria-disabled={disabled} id={id} class:list={["group inline-block", className]} title={title}>
+    <span aria-disabled={disabled} {id} class:list={["group inline-block", className]} {title}>
       <slot />
     </span>
   ) : (
     // biome-ignore lint/a11y/useValidAnchor: https://github.com/biomejs/biome/issues/11496
-    <a class:list={["group inline-block hover:text-accent", className]} {href} id={id} title={title}>
+    <a
+      class:list={["group inline-block hover:text-accent", className]}
+      {href}
+      {id}
+      {title}
+      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+      target={href.startsWith("http") ? "_blank" : undefined}
+    >
       <slot />
     </a>
   )
